@@ -24,21 +24,17 @@
         <thead>
           <tr>
             <th>ID</th>
+            <th style="width: 100px">ステータス</th>
             <th style="width: 250px">タスク</th>
-            <th style="width: 250px">ステータス</th>
           </tr>
         </thead>
           <tbody>
             <tr v-for="task in tasks">
               <th>{{ task ? task.id : '' }}<th>
-            <td style="width: 250px">
-              {{ task ? task.name : '' }}
-            </td>
             <td
-              style="width: 250px; text-align: center;"
+              style="width: 100px; text-align: center;"
             >
               <!--
-                <option :value="null"></option>
                 FIXME: @changeの箇所を後でちゃんと実装する
               -->
               <select
@@ -47,12 +43,14 @@
               >
                 <option
                   v-for="status in statuses"
-                  :key="status.id"
-                  :value="status.name"
+                  :value="status.id"
                 >
                   {{ status.name }}
                 </option>
               </select>
+            </td>
+            <td style="width: 250px">
+              {{ task ? task.name : '' }}
             </td>
           </tbody>
       </table>
