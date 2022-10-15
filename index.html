@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="main.css">
+    <title>ToDo</title>
+  </head>
+  <body>
+    <div id="app">
+      <!--
+      -->
+      <h1>ToDo<h1>
+      <form class="add-form" v-on:submit.prevent="addTask">
+        <!-- タスク入力フォーム -->
+        <input
+          type="text"
+          style="width:250px"
+          placehosder="新しい作業を追加"
+          v-model=submittedTask
+        >
+        <!-- 追加ボタン-->
+        <button type="submit">追加</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th style="width: 250px">タスク</th>
+            <th style="width: 250px">ステータス</th>
+          </tr>
+        </thead>
+          <tbody>
+            <tr v-for="task in tasks">
+                <th>{{ task ? task.id : '' }}<th>
+            <td style="width: 250px">
+              {{ task ? task.name : '' }}
+            </td>
+            <td style="width: 250px; text-align: center;">
+              {{ task ? statusText(task.status_id) : '' }}
+            </td>
+          </tbody>
+      </table>
+    </div>
+  </body>
+<script src="./lib/vue.js"></script>
+<script src="./main.js"></script>
+</html>

@@ -1,0 +1,7 @@
+thead, tbody {
+    display: block;
+}
+tbody {
+    overflow-y: scroll;
+    height: 600px;
+}
