@@ -25,3 +25,7 @@ https://backlog.com/ja/git-tutorial/stepup/05/
 - revert：変更取り消し
 - test：テストコードを作成
 - merge：マージ（Gitでマージするとデフォルトでつくはず）
+
+## 使用フレームワーク・ライブラリ
+- Vue.js v2.6.14
+- vue-select v3.19.0
