@@ -2,12 +2,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="lib/vue-select.css">
     <title>ToDo</title>
   </head>
   <body>
     <div id="app">
-      <!--
-      -->
       <h1>ToDo<h1>
       <form class="add-form" v-on:submit.prevent="addTask">
         <!-- タスク入力フォーム -->
@@ -23,8 +22,8 @@
       <table>
         <thead>
           <tr>
-            <th>ID</th>
-            <th style="width: 100px">ステータス</th>
+            <th style="width: 30px">ID</th>
+            <th style="width: 130px">ステータス</th>
             <th style="width: 250px">タスク</th>
           </tr>
         </thead>
@@ -33,26 +32,17 @@
               v-for="task in tasks"
               :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
             >
-              <th>{{ task ? task.id : '' }}<th>
-              <td
-                style="width: 100px; text-align: center;"
-              >
-              <!--
-                FIXME: @changeの箇所を後でちゃんと実装する
-                       もしかしたらいらないかも
-              -->
-              <select
-                v-model="task.status_id"
-                @change=""
-                :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
-              >
-                <option
-                  v-for="status in statuses"
-                  :value="status.id"
+              <td style="width: 30px">
+                {{ task ? task.id : '' }}
+              </td>
+              <td style="width: 130px; text-align: center;">
+                <v-select
+                  label="name"
+                  :options="statuses"
+                  :reduce="status => status.id"
+                  v-model="task.status_id"
                 >
-                  {{ status.name }}
-                </option>
-              </select>
+                </v-select>
             </td>
             <td style="width: 250px">
               {{ task ? task.name : '' }}
@@ -62,5 +52,6 @@
     </div>
   </body>
 <script src="./lib/vue.js"></script>
+<script src="./lib/vue-select.js"></script>
 <script src="./main.js"></script>
 </html>

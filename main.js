@@ -1,3 +1,6 @@
+// ライブラリのインポート
+Vue.component('v-select', VueSelect.VueSelect);
+// Vueインスタンス
 new Vue({
   el: '#app',
   data: {
@@ -12,14 +15,9 @@ new Vue({
     ],
   },
   computed: {
-    statusText: function() {
-      return function(id) {
-        return this.statuses.find(object => object.id == id).name;
-      };
-    },
   },
   methods: {
-    // タスクを追加
+    // タスクの追加
     addTask: function() {
       this.tasks.push({
         // id: todoStorage.uid++,
