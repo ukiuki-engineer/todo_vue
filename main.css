@@ -35,10 +35,21 @@ tbody {
   overflow-y: scroll;
   height: 600px;
 }
-/*FIXME: v-select中のスタイルが変更できない*/
 .v-select {
-  background: #696969;
-  color: #ffffff;
+  --vs-controls-color: #ffffff;
+  --vs-border-color: #ffffff;
+
+  --vs-dropdown-bg: #282c34;
+  --vs-dropdown-color: #cc99cd;
+  --vs-dropdown-option-color: #ffffff;
+
+  --vs-selected-bg: #664cc3;
+  --vs-selected-color: #eeeeee;
+
+  --vs-search-input-color: #eeeeee;
+
+  --vs-dropdown-option--active-bg: #664cc3;
+  --vs-dropdown-option--active-color: #eeeeee;
 }
 select {
   outline: none;
