@@ -7,17 +7,18 @@
   </head>
   <body>
     <div id="app">
-      <h1>ToDo<h1>
+      <h1>ToDo</h1>
       <form class="add-form" v-on:submit.prevent="addTask">
-        <!-- タスク入力フォーム -->
+        <!--タスク入力フォーム-->
         <input
           type="text"
           style="width:250px"
           placehosder="新しい作業を追加"
           v-model=submittedTask
         >
-        <!-- 追加ボタン-->
-        <button type="submit">追加</button>
+        </input>
+        <!--追加ボタン-->
+        <button type="submit" class="btn">追加</button>
       </form>
       <table>
         <thead>
@@ -41,6 +42,7 @@
                   :options="statuses"
                   :reduce="status => status.id"
                   v-model="task.status_id"
+                  class="v-select"
                 >
                 </v-select>
             </td>

@@ -1,3 +1,33 @@
+/*
+ */
+body {
+  background: #000000;
+  color: #ffffff;
+}
+table {
+  background: #696969;
+}
+/*ボタン*/
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 1.0rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #696969;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+  border-color: #ffffff;
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+}
+.btn:hover {
+  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
 thead, tbody {
   display: block;
 }
@@ -5,9 +35,11 @@ tbody {
   overflow-y: scroll;
   height: 600px;
 }
-/*
- *FIXME: セレクトボックスの枠線を消したいが反映されない
- */
+/*FIXME: v-select中のスタイルが変更できない*/
+.v-select {
+  background: #696969;
+  color: #ffffff;
+}
 select {
   outline: none;
 }
