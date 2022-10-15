@@ -29,17 +29,22 @@
           </tr>
         </thead>
           <tbody>
-            <tr v-for="task in tasks">
-              <th>{{ task ? task.id : '' }}<th>
-            <td
-              style="width: 100px; text-align: center;"
+            <tr
+              v-for="task in tasks"
+              :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
             >
+              <th>{{ task ? task.id : '' }}<th>
+              <td
+                style="width: 100px; text-align: center;"
+              >
               <!--
                 FIXME: @changeの箇所を後でちゃんと実装する
+                       もしかしたらいらないかも
               -->
               <select
                 v-model="task.status_id"
                 @change=""
+                :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
               >
                 <option
                   v-for="status in statuses"

@@ -1,7 +1,19 @@
 thead, tbody {
-    display: block;
+  display: block;
 }
 tbody {
-    overflow-y: scroll;
-    height: 600px;
+  overflow-y: scroll;
+  height: 600px;
+}
+/*
+ *FIXME: セレクトボックスの枠線を消したいが反映されない
+ */
+select {
+  outline: none;
+}
+.status-doing {
+  background: #ff0000;
+}
+.status-complete {
+  background: #ffd700;
 }
