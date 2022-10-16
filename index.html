@@ -23,9 +23,10 @@
       <table>
         <thead>
           <tr>
-            <th style="width: 30px">ID</th>
-            <th style="width: 130px">ステータス</th>
-            <th style="width: 250px">タスク</th>
+            <th style="width: 20px">ID</th>
+            <th style="width: 300px">タスク</th>
+            <th style="width: 120px">ステータス</th>
+            <th style="width: 230px">備考</th>
           </tr>
         </thead>
           <tbody>
@@ -33,10 +34,42 @@
               v-for="task in tasks"
               :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
             >
-              <td style="width: 30px">
+              <td style="width: 20px">
                 {{ task ? task.id : '' }}
               </td>
-              <td style="width: 130px; text-align: center;">
+              <td
+                v-if="!isEditTask(task.id)"
+                style="width: 320px"
+              >
+                <img
+                  v-if="task.status_id != 2 && task.status_id !=4"
+                  src="./pictures/pen_red.png"
+                  @click="editting_task_id = task.id">
+                </img>
+                <img
+                  v-else
+                  src="./pictures/pen_gray.png"
+                  @click="editting_task_id = task.id">
+                </img>
+                {{ task ? task.name : '' }}
+                <!--
+                <div v-if="hasSubTasks(task.id)">
+                  <span v-for="subtask in subtasks">
+                    {{ subtask.name }}<br>
+                  </span>
+                </div>
+                -->
+              </td>
+              <td v-else>
+                <input
+                  style="width: 250px"
+                  type="txt"
+                  v-model="task.name"
+                  @blur="editting_task_id = null"
+                  @keydown.enter="editting_task_id = null"
+                >
+              </td>
+              <td style="width: 120px;">
                 <v-select
                   label="name"
                   :options="statuses"
@@ -45,8 +78,30 @@
                 >
                 </v-select>
               </td>
-              <td style="width: 250px">
-                {{ task ? task.name : '' }}
+              <td
+                v-if="!isEditComment(task.id)"
+                style="width: 230px"
+              >
+                <img
+                  v-if="task.status_id != 2 && task.status_id !=4"
+                  src="./pictures/pen_red.png"
+                  @click="editting_comment_id = task.id">
+                </img>
+                <img
+                  v-else
+                  src="./pictures/pen_gray.png"
+                  @click="editting_comment_id = task.id">
+                </img>
+                {{ task.comment }}
+              </td>
+              <td v-else>
+                <input
+                  style="width: 200px"
+                  type="txt"
+                  v-model="task.comment"
+                  @blur="editting_comment_id = null"
+                  @keydown.enter="editting_comment_id = null"
+                >
               </td>
             </tr>
           </tbody>

@@ -1,5 +1,3 @@
-/*
- */
 main {
   box-sizing: border-box;
 }
@@ -21,38 +19,24 @@ table {
   */
   background: #35332d;
   border: 2px #ffffff solid;
+  font-size: 12px;
 }
 thead {
+  background: #664cc3;
   border-bottom: 2px #ffffff solid;
-}
-/*ボタン*/
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  /*高さ 幅*/
-  padding: 0.1rem 0.8rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-size: 12px;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
-  backface-visibility: hidden;
-  border: 0.3rem solid transparent;
-  border-radius: 3rem;
-  border-color: #ffffff;
-  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
-}
-.btn:hover {
-  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
-}
-thead, tbody {
-  display: block;
 }
 tbody {
   overflow-y: scroll;
   height: 600px;
+}
+td,th {
+  border-right: 1px #ffffff solid;
+}
+td {
+  border-bottom: 1px #ffffff solid;
+}
+thead, tbody {
+  display: block;
 }
 .v-select {
   --vs-controls-color: #ffffff;
@@ -69,13 +53,36 @@ tbody {
 
   --vs-dropdown-option--active-bg: #664cc3;
   --vs-dropdown-option--active-color: #eeeeee;
+
+  /* Font */
+  --vs-font-size: 0.8rem;
+  --vs-line-height: 1.0;
 }
-select {
-  outline: none;
+/* ボタン */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.1rem 0.8rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+  border-color: #ffffff;
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
 }
+.btn:hover {
+  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+}
+/* ステータスに応じた色 */
 .status-doing {
   background: #ff0000;
 }
 .status-complete {
-  background: #ffd700;
+  background: #008000;
 }
