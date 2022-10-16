@@ -38,6 +38,9 @@ td {
 thead, tbody {
   display: block;
 }
+img:hover {
+  cursor: pointer;
+}
 .v-select {
   --vs-controls-color: #ffffff;
   --vs-border-color: #ffffff;
@@ -78,6 +81,7 @@ thead, tbody {
 }
 .btn:hover {
   transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+  cursor: pointer;
 }
 /* ステータスに応じた色 */
 .status-doing {
