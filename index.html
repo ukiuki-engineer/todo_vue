@@ -24,7 +24,7 @@
           <tr>
             <th style="width: 20px">ID</th>
             <th style="width: 300px">タスク</th>
-            <th style="width: 120px">ステータス</th>
+            <th style="width: 110px">ステータス</th>
             <th style="width: 230px">備考</th>
             <th style="width: 30px"></th>
           </tr>
@@ -39,7 +39,7 @@
               </td>
               <td
                 v-if="!isEditTask(task.id)"
-                style="width: 320px"
+                style="width: 300px"
               >
                 <input
                   type="image"
@@ -64,14 +64,14 @@
               </td>
               <td v-else>
                 <input
-                  style="width: 250px"
+                  style="width: 300px"
                   type="txt"
                   v-model="task.name"
                   @blur="editting_task_id = null"
                   @keydown.enter="editting_task_id = null"
                 />
               </td>
-              <td style="width: 120px;">
+              <td style="width: 110px;">
                 <v-select
                   label="name"
                   :options="statuses"
