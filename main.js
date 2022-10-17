@@ -1,3 +1,6 @@
+/*
+ * ローカルストレージへの保存
+ */
 var STORAGE_KEY = 'todo_vue'
 var taskStorage = {
   fetch: function () {
@@ -12,9 +15,13 @@ var taskStorage = {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
   }
 }
-// ライブラリのインポート
+/*
+ * ライブラリのインポート
+ */
 Vue.component('v-select', VueSelect.VueSelect);
-// Vueインスタンス
+/*
+ * Vueインスタンス
+ */
 new Vue({
   el: '#app',
   data: {
@@ -81,7 +88,7 @@ new Vue({
       this.submittedTask = null;
     },
     deleteAll: function () {
-      if (confirm("全部削除しても良いですか？")) {
+      if (confirm("全てのタスクを削除しても良いですか？")) {
         this.tasks = [];
         taskStorage.uid = 1;
       }

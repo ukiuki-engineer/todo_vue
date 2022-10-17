@@ -42,6 +42,8 @@ img:hover {
   cursor: pointer;
 }
 .tfoot-td {
+  background: #080800;
+  color: #ffffff;
   border-top: 1px #ffffff solid;
   border-bottom: none;
   border-right: none;
