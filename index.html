@@ -12,11 +12,12 @@
         <!--タスク入力フォーム-->
         <input
           type="text"
-          style="width:250px"
+          style="width:250px; border-radius: 5px; font-size: 20px; height: 25px"
           placehosder="新しい作業を追加"
           v-model=submittedTask
         />
         <!--追加ボタン-->
+        <!--FIXME: ボタン位置がちょっと下になってしまう-->
         <button type="submit" class="btn">追加</button>
       </form>
       <table>
