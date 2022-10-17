@@ -1,3 +1,17 @@
+var STORAGE_KEY = 'todo_vue'
+var taskStorage = {
+  fetch: function () {
+    var tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    tasks.forEach(function (task, index) {
+      task.id = index;
+    })
+    taskStorage.uid = tasks.length + 1;
+    return tasks;
+  },
+  save: function (tasks) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  }
+}
 // ライブラリのインポート
 Vue.component('v-select', VueSelect.VueSelect);
 // Vueインスタンス
@@ -39,17 +53,37 @@ new Vue({
       }
     },
   },
+  watch: {
+    // オプションを使う場合はオブジェクト形式にする
+    tasks: {
+      // 引数はウォッチしているプロパティの変更後の値
+      handler: function (tasks) {
+        taskStorage.save(tasks)
+      },
+      // deep オプションでネストしているデータも監視できる
+      deep: true
+    }
+  },
+  created() {
+    // インスタンス作成時に自動的にfetch()する
+    this.tasks = taskStorage.fetch()
+  },
   methods: {
     // タスクの追加
     addTask: function() {
       this.tasks.push({
-        // id: todoStorage.uid++,
-        id: this.tasks.length + 1,
+        id: taskStorage.uid++,
         name: this.submittedTask,
         status_id: 0,
         comment: null,
       })
       this.submittedTask = null;
     },
+    allDelete: function () {
+      if (confirm("全部削除しても良いですか？")) {
+        this.tasks = [];
+        taskStorage.uid = 1;
+      }
+  }
   }
 });

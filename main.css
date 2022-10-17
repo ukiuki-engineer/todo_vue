@@ -41,6 +41,12 @@ thead, tbody {
 img:hover {
   cursor: pointer;
 }
+.tfoot-td {
+  border-top: 1px #ffffff solid;
+  border-bottom: none;
+  border-right: none;
+  font-size: 12px;
+}
 .v-select {
   --vs-controls-color: #ffffff;
   --vs-border-color: #ffffff;
@@ -89,4 +95,10 @@ img:hover {
 }
 .status-complete {
   background: #008000;
+}
+/* ゴミ箱のアイコン */
+.icon-garbage {
+  width: 3%;
+  top: 10%;
+  transform: translate(0%, 20%);
 }
