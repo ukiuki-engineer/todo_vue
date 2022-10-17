@@ -49,7 +49,10 @@ img:hover {
 }
 .v-select {
   --vs-controls-color: #ffffff;
+  /*
   --vs-border-color: #ffffff;
+  */
+  --vs-border: none;
 
   --vs-dropdown-bg: #282c34;
   --vs-dropdown-color: #cc99cd;
