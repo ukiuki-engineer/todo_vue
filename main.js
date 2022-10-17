@@ -72,6 +72,7 @@ new Vue({
     // タスクの追加
     addTask: function() {
       this.tasks.push({
+        // FIXME: 更新すると何故かid=0からリナンバーされる
         id: taskStorage.uid++,
         name: this.submittedTask,
         status_id: 0,
@@ -79,11 +80,16 @@ new Vue({
       })
       this.submittedTask = null;
     },
-    allDelete: function () {
+    deleteAll: function () {
       if (confirm("全部削除しても良いですか？")) {
         this.tasks = [];
         taskStorage.uid = 1;
       }
-  }
+    },
+    deleteTask: function(id) {
+      if (confirm("id=" + id + "のタスクを削除しても良いですか？")) {
+        alert("FIXME: 削除機能未実装");
+      }
+    }
   }
 });

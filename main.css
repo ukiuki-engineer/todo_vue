@@ -97,8 +97,12 @@ img:hover {
   background: #008000;
 }
 /* ゴミ箱のアイコン */
-.icon-garbage {
+.icon-delete-all {
   width: 3%;
-  top: 10%;
   transform: translate(0%, 20%);
+}
+.icon-delete-task {
+  text-align: center;
+  width: 70%;
+  transform: translate(20%, 0%);
 }

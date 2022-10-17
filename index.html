@@ -15,8 +15,7 @@
           style="width:250px"
           placehosder="新しい作業を追加"
           v-model=submittedTask
-        >
-        </input>
+        />
         <!--追加ボタン-->
         <button type="submit" class="btn">追加</button>
       </form>
@@ -27,10 +26,11 @@
             <th style="width: 300px">タスク</th>
             <th style="width: 120px">ステータス</th>
             <th style="width: 230px">備考</th>
+            <th style="width: 30px"></th>
           </tr>
         </thead>
-          <tbody>
-            <tr
+        <tbody>
+          <tr
               v-for="task in tasks"
               :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
             >
@@ -41,16 +41,18 @@
                 v-if="!isEditTask(task.id)"
                 style="width: 320px"
               >
-                <img
-                  v-if="task.status_id != 2 && task.status_id !=4"
+                <input
+                  type="image"
+                  v-if="task.status_id != 2"
                   src="./pictures/pen_red.png"
-                  @click="editting_task_id = task.id">
-                </img>
-                <img
+                  @click="editting_task_id = task.id"
+                />
+                <input
+                  type="image"
                   v-else
                   src="./pictures/pen_gray.png"
-                  @click="editting_task_id = task.id">
-                </img>
+                  @click="editting_task_id = task.id"
+                />
                 {{ task ? task.name : '' }}
                 <!--
                 <div v-if="hasSubTasks(task.id)">
@@ -67,7 +69,7 @@
                   v-model="task.name"
                   @blur="editting_task_id = null"
                   @keydown.enter="editting_task_id = null"
-                >
+                />
               </td>
               <td style="width: 120px;">
                 <v-select
@@ -82,16 +84,18 @@
                 v-if="!isEditComment(task.id)"
                 style="width: 230px"
               >
-                <img
-                  v-if="task.status_id != 2 && task.status_id !=4"
+                <input
+                  type="image"
+                  v-if="task.status_id != 2"
                   src="./pictures/pen_red.png"
-                  @click="editting_comment_id = task.id">
-                </img>
-                <img
+                  @click="editting_comment_id = task.id"
+                />
+                <input
+                  type="image"
                   v-else
                   src="./pictures/pen_gray.png"
-                  @click="editting_comment_id = task.id">
-                </img>
+                  @click="editting_comment_id = task.id"
+                />
                 {{ task.comment }}
               </td>
               <td v-else>
@@ -101,7 +105,23 @@
                   v-model="task.comment"
                   @blur="editting_comment_id = null"
                   @keydown.enter="editting_comment_id = null"
-                >
+                />
+              </td>
+              <td style="width: 30px">
+                <input
+                  type="image"
+                  v-if="task.status_id != 2"
+                  src="./pictures/garbage_red.png"
+                  class="icon-delete-task"
+                  @click="deleteTask(task.id)"
+                />
+                <input
+                  type="image"
+                  v-else
+                  src="./pictures/garbage_black.png"
+                  class="icon-delete-task"
+                  @click="deleteTask(task.id)"
+                />
               </td>
             </tr>
           </tbody>
@@ -109,10 +129,11 @@
             <tr>
               <td class="tfoot-td">
                 全て削除する→
-                <img
-                  src="./pictures/Garbage.png"
-                  class="icon-garbage"
-                  @click="allDelete"
+                <input
+                  type="image"
+                  src="./pictures/garbage_red.png"
+                  class="icon-delete-all"
+                  @click="deleteAll"
                 />
               </td>
             </tr>
