@@ -20,3 +20,33 @@
 - サブタスクをクリックすると編集できる
 - 全てのサブタスクが完了したら、親タスクは完了となる
 - 親タスクを完了にすると、子タスクは全て完了となる
+## Git運用ルール
+### 参考
+https://backlog.com/ja/git-tutorial/stepup/05/
+### コミットコメント
+コミットコメントには以下のタグをつける。
+- fix：バグ修正
+- hotfix：クリティカルなバグ修正
+- add：新規機能追加
+- update：機能修正（バグではない）
+- change：仕様変更
+- clean：整理
+- disable：無効化（コメントアウト等）
+- remove：機能削除
+- revert：変更取り消し
+- test：テストコードを作成
+- merge：マージ（Gitでマージするとデフォルトでつくはず）
+## 使用フレームワーク・ライブラリ
+- Vue.js v2.6.14
+- vue-select v3.19.0
+### ブランチの命名規則
+|ブランチ名|役割|派生元|マージ先|
+|---|---|---|---|
+|master|公開するものを置くブランチ|||
+|develop|開発中のものを置くブランチ|master|master|
+|release|次にリリースするものを置くブランチ|develop|develop, master|
+|feature-*|新機能開発中に使うブランチ|develop|develop|
+|hotfix-*|公開中のもののバグ修正用ブランチ|master|develop, master|
+
+※``feature-*``や``hotfix-*``は、``*``には適当な名前をつける
+※実質ブランチは切ってない。切ってもfeatureくらい。
