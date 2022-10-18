@@ -17,14 +17,14 @@ table {
   /*
   background: #808080;
   */
-  background: #35332d;
-  border: 2px #ffffff solid;
-  border-radius: 5px;
+  /* background: #35332d; */
+  /* border: 2px #ffffff solid; */
+  /* border-radius: 5px; */
   font-size: 12px;
   word-break:break-word;
 }
 thead {
-  background: #664cc3;
+  /* background: #664cc3; */
   border-bottom: 2px #ffffff solid;
 }
 tbody {
@@ -32,7 +32,7 @@ tbody {
   height: 600px;
 }
 td,th {
-  border-right: 1px #ffffff solid;
+  /* border-right: 1px #ffffff solid; */
 }
 td {
   border-bottom: 1px #ffffff solid;
@@ -43,10 +43,13 @@ thead, tbody {
 img:hover {
   cursor: pointer;
 }
+tr:hover {
+  background: #664cc3;
+}
 .tfoot-td {
-  background: #080800;
+  /* background: #080800; */
   color: #ffffff;
-  border-top: 1px #ffffff solid;
+  /* border-top: 1px #ffffff solid; */
   border-bottom: none;
   border-right: none;
   font-size: 12px;
@@ -103,7 +106,8 @@ img:hover {
   background: #ff0000;
 }
 .status-complete {
-  background: #008000;
+  /* background: #008000; */
+  background: gray;
 }
 /* ゴミ箱のアイコン */
 .icon-delete-all {
