@@ -100,6 +100,11 @@ new Vue({
         taskStorage.save(this.tasks);
         this.tasks = taskStorage.fetch()
       }
-    }
+    },
+    // Enterキー押下時の処理
+    onKeydownEnter: function(keyCode) {
+      if (keyCode !== 13) return;
+      this.editting_task_id = null;
+    },
   }
 });
