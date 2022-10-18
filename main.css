@@ -29,7 +29,7 @@ thead {
 }
 tbody {
   overflow-y: scroll;
-  height: 600px;
+  height: 520px;
 }
 td,th {
   /* border-right: 1px #ffffff solid; */
@@ -47,6 +47,9 @@ tr:hover {
   background: #664cc3;
 }
 .thead-tr:hover{
+  background: #080800;
+}
+.tfoot-tr:hover{
   background: #080800;
 }
 .tfoot-td {
