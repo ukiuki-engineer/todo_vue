@@ -46,6 +46,9 @@ img:hover {
 tr:hover {
   background: #664cc3;
 }
+.thead-tr:hover{
+  background: #080800;
+}
 .tfoot-td {
   /* background: #080800; */
   color: #ffffff;
