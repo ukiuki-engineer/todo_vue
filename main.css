@@ -112,8 +112,8 @@ tr:hover {
   background: #ff0000;
 }
 .status-complete {
-  /* background: #008000; */
-  background: gray;
+  color: gray;
+  background: #35332d;
 }
 /* ゴミ箱のアイコン */
 .icon-delete-all {
