@@ -102,9 +102,13 @@ new Vue({
       }
     },
     // Enterキー押下時の処理
-    onKeydownEnter: function(keyCode) {
+    onKeydownEnter: function(keyCode, target) {
       if (keyCode !== 13) return;
-      this.editting_task_id = null;
+      if (target == 'name') {
+        this.editting_task_id = null;
+      } else {
+        this.editting_comment_id = null;
+      }
     },
   }
 });
