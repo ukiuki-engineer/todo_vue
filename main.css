@@ -21,6 +21,7 @@ table {
   border: 2px #ffffff solid;
   border-radius: 5px;
   font-size: 12px;
+  word-break:break-word;
 }
 thead {
   background: #664cc3;
