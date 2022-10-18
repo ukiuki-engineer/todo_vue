@@ -6,7 +6,7 @@ var taskStorage = {
   fetch: function () {
     var tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
     tasks.forEach(function (task, index) {
-      task.id = index;
+      task.id = index + 1;
     })
     taskStorage.uid = tasks.length + 1;
     return tasks;
@@ -80,7 +80,8 @@ new Vue({
     addTask: function() {
       this.tasks.push({
         // FIXME: 更新すると何故かid=0からリナンバーされる
-        id: taskStorage.uid++,
+        // id: taskStorage.uid++,
+        id: this.tasks.length + 1,
         name: this.submittedTask,
         status_id: 0,
         comment: null,
@@ -95,7 +96,9 @@ new Vue({
     },
     deleteTask: function(id) {
       if (confirm("id=" + id + "のタスクを削除しても良いですか？")) {
-        alert("FIXME: 削除機能未実装");
+        this.tasks.splice(--id, 1);
+        taskStorage.save(this.tasks);
+        this.tasks = taskStorage.fetch()
       }
     }
   }
