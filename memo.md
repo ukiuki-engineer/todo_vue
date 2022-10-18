@@ -45,7 +45,7 @@ https://backlog.com/ja/git-tutorial/stepup/05/
 |feature-*|新機能開発中に使うブランチ|develop|develop|
 |hotfix-*|公開中のもののバグ修正用ブランチ|master|develop, master|
 
-※``feature-*``や``hotfix-*``は、``*``には適当な名前をつける
+※``feature-*``や``hotfix-*``は、``*``には適当な名前をつける  
 ※実質ブランチは切ってない。切ってもfeatureくらい。
 ## 使用フレームワーク・ライブラリ
 - Vue.js v2.6.14
