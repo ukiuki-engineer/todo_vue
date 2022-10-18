@@ -61,7 +61,6 @@ new Vue({
     },
   },
   watch: {
-    // オプションを使う場合はオブジェクト形式にする
     tasks: {
       // 引数はウォッチしているプロパティの変更後の値
       handler: function (tasks) {
@@ -76,10 +75,9 @@ new Vue({
     this.tasks = taskStorage.fetch()
   },
   methods: {
-    // タスクの追加
+    // タスク追加
     addTask: function() {
       this.tasks.push({
-        // FIXME: 更新すると何故かid=0からリナンバーされる
         // id: taskStorage.uid++,
         id: this.tasks.length + 1,
         name: this.submittedTask,
@@ -88,12 +86,14 @@ new Vue({
       })
       this.submittedTask = null;
     },
+    // 全タスク削除
     deleteAll: function () {
       if (confirm("全てのタスクを削除しても良いですか？")) {
         this.tasks = [];
         taskStorage.uid = 1;
       }
     },
+    // タスク削除
     deleteTask: function(id) {
       if (confirm("id=" + id + "のタスクを削除しても良いですか？")) {
         this.tasks.splice(--id, 1);
