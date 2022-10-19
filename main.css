@@ -83,6 +83,29 @@ tr:hover {
   --vs-font-size: 0.8rem;
   --vs-line-height: 1.0;
 }
+.v-select-complete {
+  --vs-controls-color: gray;
+  /*
+  --vs-border-color: #ffffff;
+  */
+  --vs-border: none;
+
+  --vs-dropdown-bg: #282c34;
+  --vs-dropdown-color: #cc99cd;
+  --vs-dropdown-option-color: #ffffff;
+
+  --vs-selected-bg: #664cc3;
+  --vs-selected-color: gray;
+
+  --vs-search-input-color: #eeeeee;
+
+  --vs-dropdown-option--active-bg: #664cc3;
+  --vs-dropdown-option--active-color: #eeeeee;
+
+  /* Font */
+  --vs-font-size: 0.8rem;
+  --vs-line-height: 1.0;
+}
 /* ボタン */
 .btn {
   display: inline-flex;

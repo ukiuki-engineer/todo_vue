@@ -25,7 +25,7 @@
           <tr class="thead-tr">
             <th style="width: 20px">ID</th>
             <th style="width: 300px">タスク</th>
-            <th style="width: 110px">ステータス</th>
+            <th style="width: 100px">ステータス</th>
             <th style="width: 230px">備考</th>
             <th style="width: 30px"></th>
           </tr>
@@ -72,13 +72,21 @@
                   @keydown.enter="onKeydownEnter($event.keyCode, 'name')"
                 />
               </td>
-              <td style="width: 110px;">
+              <td style="width: 100px;">
                 <v-select
+                  :class="task.status_id !=4 ? 'v-select' : 'v-select-complete'"
                   label="name"
                   :options="statuses"
                   :reduce="status => status.id"
                   v-model="task.status_id"
+                  :clearable="false"
                 >
+              <!--memo:
+              :clearable="false" ←クリアボタンの無効化
+              公式サイト
+              https://vue-select.org/api/props.html
+              のpropsは、v-selectタグの属性に```:apiname=指定されている型の値```を入れて使う
+              -->
                 </v-select>
               </td>
               <td
