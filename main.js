@@ -94,10 +94,12 @@ new Vue({
       }
     },
     // タスク削除
-    deleteTask: function(id) {
-      if (confirm("id=" + id + "のタスクを削除しても良いですか？")) {
-        this.tasks.splice(--id, 1);
+    deleteTask: function(index) {
+      if (confirm("id=" + ++index + "のタスクを削除しても良いですか？")) {
+        this.tasks.splice(index, 1);
+        // ローカルストレージを保存
         taskStorage.save(this.tasks);
+        // fetchして更新
         this.tasks = taskStorage.fetch()
       }
     },
@@ -110,5 +112,23 @@ new Vue({
         this.editting_comment_id = null;
       }
     },
+    // 行ドラッグ時の挙動
+    dragTask: function(event, dragIndex) {
+      event.dataTransfer.effectAllowed = 'move';
+      event.dataTransfer.dropEffect = 'move';
+      event.dataTransfer.setData('drag-index', dragIndex);
+    },
+    // 行ドロップ時の挙動
+    dropTask: function(event, dropIndex) {
+      const dragIndex = event.dataTransfer.getData('drag-index')
+      const deleteTask = this.tasks.splice(dragIndex, 1);
+      this.tasks.splice(dropIndex, 0, deleteTask[0])
+      // ローカルストレージを保存
+      taskStorage.save(this.tasks);
+      // fetchして更新
+      this.tasks = taskStorage.fetch();
+    },
+    onChangeEventHandler() {
+    }
   }
 });

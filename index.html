@@ -32,8 +32,13 @@
         </thead>
         <tbody>
           <tr
-              v-for="task in tasks"
+              v-for="(task, index) in tasks"
+              draggable
               :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
+              @dragstart="dragTask($event, index)"
+              @drop="dropTask($event, index)"
+              @dragover.prevent
+              @dragenter.prevent
             >
               <td style="width: 20px">
                 {{ task ? task.id : '' }}
@@ -125,14 +130,14 @@
                   v-if="task.status_id != 2"
                   src="./pictures/garbage_red.png"
                   class="icon-delete-task"
-                  @click="deleteTask(task.id)"
+                  @click="deleteTask(index)"
                 />
                 <input
                   type="image"
                   v-else
                   src="./pictures/garbage_black.png"
                   class="icon-delete-task"
-                  @click="deleteTask(task.id)"
+                  @click="deleteTask(index)"
                 />
               </td>
             </tr>
