@@ -95,7 +95,7 @@ new Vue({
     },
     // タスク削除
     deleteTask: function(index) {
-      if (confirm("id=" + ++index + "のタスクを削除しても良いですか？")) {
+      if (confirm("id=" + (index + 1) + "のタスクを削除しても良いですか？")) {
         this.tasks.splice(index, 1);
         // ローカルストレージを保存
         taskStorage.save(this.tasks);
