@@ -46,6 +46,9 @@ img:hover {
 tr:hover {
   background: #664cc3;
 }
+button {
+  border-radius: 5px;
+}
 .thead-tr:hover{
   background: #080800;
 }
