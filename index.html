@@ -26,7 +26,7 @@
             <th style="width: 20px">ID</th>
             <th style="width: 300px">タスク</th>
             <th style="width: 100px">ステータス</th>
-            <th style="width: 230px">備考</th>
+            <th style="width: 270px">備考</th>
             <th style="width: 30px"></th>
           </tr>
         </thead>
@@ -91,7 +91,7 @@
               </td>
               <td
                 v-if="!isEditComment(task.id)"
-                style="width: 230px"
+                style="width: 270px"
               >
                 <input
                   type="image"
@@ -108,13 +108,16 @@
                 {{ task.comment }}
               </td>
               <td v-else>
-                <input
+                <!--FIXME:改行あり文章を入力しても、テーブルで表示すると改行されない-->
+                <textarea
                   style="width: 100%"
-                  type="txt"
+                  rows="5"
                   v-model="task.comment"
                   @blur="editting_comment_id = null"
-                  @keydown.enter="onKeydownEnter($event.keyCode, 'comment')"
-                />
+                ></textarea>
+                <br/>
+                <button @click="editting_comment_id = null">編集完了</button>
+                (またはTabキーで編集を完了する)
               </td>
               <td style="width: 30px">
                 <input
