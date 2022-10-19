@@ -3,11 +3,17 @@
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="lib/vue-select.css">
+    <link rel="stylesheet" href="lib/bootstrap-icons-1.9.1/bootstrap-icons.css">
     <title>ToDo</title>
   </head>
   <body>
     <div id="app">
-      <h1>&#x2611;&#xFE0F;ToDo</h1>
+      <h1>
+        <div class="icon-todo">
+          <i class="bi bi-list-task icon"></i>
+        </div>
+        ToDo
+      </h1>
       <form class="add-form" v-on:submit.prevent="addTask">
         <!--タスク入力フォーム-->
         <input

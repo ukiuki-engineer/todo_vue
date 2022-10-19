@@ -1,0 +1,5 @@
+.icon-todo {
+  display: inline-block;
+  _display: inline;
+  transform: translate(0%, 2px);
+}

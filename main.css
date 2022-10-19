@@ -151,3 +151,8 @@ button {
   width: 70%;
   transform: translate(20%, 0%);
 }
+.icon-todo {
+  display: inline-block;
+  _display: inline;
+  transform: translate(0%, 2px);
+}
