@@ -45,6 +45,7 @@ new Vue({
     editting_task_id: null,
     editting_comment_id: null,
     editting_time_id: null,
+    selectedTasks: [],
   },
   computed: {
     hasSubTasks: function() {
@@ -87,6 +88,7 @@ new Vue({
         status_id: 0,
         comment: null,
         time: null,
+        isCheck: false,
       })
       this.submittedTask = null;
     },
@@ -137,8 +139,25 @@ new Vue({
       window.location.reload();
     },
     // 時刻編集をオン
-    editTime(id) {
+    endTime: function(id) {
       this.editting_time_id = id;
+    },
+    checkTask(index, event) {
+      // isCheckが定義されていない場合、isCheckにtrueを入れる
+      if (this.tasks[index].isCheck == null) {
+        this.tasks[index].isCheck = true;
+      // isCheckが定義されている場合、真偽を反転させる
+      } else if(this.tasks[index].isCheck == false) {
+        this.tasks[index].isCheck = true;
+      } else {
+        this.tasks[index].isCheck = false;
+      }
+      // ローカルストレージを保存
+      taskStorage.save(this.tasks);
+      // fetchして更新
+      this.tasks = taskStorage.fetch();
+      // FIXME:備考にmarkdownが書いてあると、一度再読み込みしないと反映されない
+      window.location.reload();
     }
   }
 });

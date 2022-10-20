@@ -150,7 +150,7 @@
                 {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
               </td>
               <td style="width: 30px">
-                <input
+                <!-- <input
                   type="image"
                   v-if="task.status_id != 2"
                   src="./pictures/garbage_red.png"
@@ -163,7 +163,12 @@
                   src="./pictures/garbage_black.png"
                   class="icon-delete-task"
                   @click="deleteTask(index)"
-                />
+                /> -->
+                <input 
+                  type="checkbox"
+                  @change="checkTask(index, $event)"
+                  v-model="task.isCheck"
+                >
               </td>
             </tr>
           </tbody>
