@@ -10,7 +10,8 @@ body {
   background: #35332d;
   background: #000000;
   */
-  background: #080800;
+  /* background: #080800; */
+  background: #212529;
   color: #ffffff;
 }
 table {
@@ -50,10 +51,12 @@ button {
   border-radius: 5px;
 }
 .thead-tr:hover{
-  background: #080800;
+  /* background: #080800; */
+  background: #212529;
 }
 .tfoot-tr:hover{
-  background: #080800;
+  /* background: #080800; */
+  background: #212529;
 }
 .tfoot-td {
   /* background: #080800; */
