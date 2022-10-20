@@ -17,6 +17,8 @@
 - bootstrapでUIを一新
 →index_bootstrap.htmlで作業中
 　追加機能や既存機能の修正は一旦index.htmlで
+- 備考欄をmarkdown対応に
+- 備考欄のキーバインドをvim対応に
 ## 機能要件(というかただのメモ)
 ### サブタスク機能
 - サブタスクが無いタスク
