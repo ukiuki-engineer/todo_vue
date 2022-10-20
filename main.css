@@ -156,3 +156,10 @@ button {
   _display: inline;
   transform: translate(0%, 2px);
 }
+.input-time {
+  background: #080800;
+  color:#ffffff
+}
+.time:hover {
+  cursor: pointer;
+}

@@ -33,6 +33,7 @@
             <th style="width: 300px">タスク</th>
             <th style="width: 100px">ステータス</th>
             <th style="width: 270px">備考</th>
+            <th style="width: 70px; text-align: center;">目標時刻</th>
             <th style="width: 30px"></th>
           </tr>
         </thead>
@@ -129,6 +130,22 @@
                 <br/>
                 <button @click="editting_comment_id = null">編集完了</button>
                 (またはTabキーで編集を完了する)
+              </td>
+              <td
+                class="time"
+                style="width: 70px;
+                text-align: center;"
+                @click="editTime(task.id)"
+              >
+                <input
+                  v-if="editting_time_id == task.id"
+                  style="width: 100%"
+                  type="time"
+                  v-model="task.time"
+                  @keydown.enter="editting_time_id = null"
+                  @blur="editting_time_id = null"
+                />
+                {{ editting_time_id != task.id ? task.time ? task.time : 'click me' : '' }}
               </td>
               <td style="width: 30px">
                 <input

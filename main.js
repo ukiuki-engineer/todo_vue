@@ -42,6 +42,7 @@ new Vue({
     ],
     editting_task_id: null,
     editting_comment_id: null,
+    editting_time_id: null,
   },
   computed: {
     hasSubTasks: function() {
@@ -83,6 +84,7 @@ new Vue({
         name: this.submittedTask,
         status_id: 0,
         comment: null,
+        time: null,
       })
       this.submittedTask = null;
     },
@@ -128,7 +130,9 @@ new Vue({
       // fetchして更新
       this.tasks = taskStorage.fetch();
     },
-    onChangeEventHandler() {
+    // 時刻編集をオン
+    editTime(id) {
+      this.editting_time_id = id;
     }
   }
 });
