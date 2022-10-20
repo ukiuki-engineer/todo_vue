@@ -105,7 +105,7 @@ new Vue({
         taskStorage.save(this.tasks);
         // fetchして更新
         this.tasks = taskStorage.fetch()
-        // FIXME:備考にmarkdownが書いてあると、削除->更新としないと表示がおかしくなる
+        // FIXME:備考にmarkdownが書いてあると、一度再読み込みしないと反映されない
         window.location.reload();
       }
     },
@@ -133,6 +133,8 @@ new Vue({
       taskStorage.save(this.tasks);
       // fetchして更新
       this.tasks = taskStorage.fetch();
+      // FIXME:備考にmarkdownが書いてあると、一度再読み込みしないと反映されない
+      window.location.reload();
     },
     // 時刻編集をオン
     editTime(id) {
