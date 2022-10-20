@@ -19,6 +19,8 @@ var taskStorage = {
  * ライブラリのインポート
  */
 Vue.component('v-select', VueSelect.VueSelect);
+// Vue.component('vue-markdown', VueMarkdown);
+Vue.use(VueMarkdown);
 /*
  * Vueインスタンス
  */
@@ -103,6 +105,8 @@ new Vue({
         taskStorage.save(this.tasks);
         // fetchして更新
         this.tasks = taskStorage.fetch()
+        // FIXME:備考にmarkdownが書いてあると、削除->更新としないと表示がおかしくなる
+        window.location.reload();
       }
     },
     // Enterキー押下時の処理

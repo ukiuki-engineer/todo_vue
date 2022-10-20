@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="lib/vue-select.css">
     <link rel="stylesheet" href="lib/bootstrap-icons-1.9.1/bootstrap-icons.css">
+    <link rel="icon" href="lib/bootstrap-icons-1.9.1/check2-circle.svg">
     <title>ToDo</title>
   </head>
   <body>
@@ -30,9 +31,9 @@
         <thead>
           <tr class="thead-tr">
             <th style="width: 20px">ID</th>
-            <th style="width: 300px">タスク</th>
+            <th style="width: 250px">タスク</th>
             <th style="width: 100px">ステータス</th>
-            <th style="width: 270px">備考</th>
+            <th style="width: 430px">備考</th>
             <th style="width: 70px; text-align: center;">目標時刻</th>
             <th style="width: 30px"></th>
           </tr>
@@ -103,7 +104,7 @@
               </td>
               <td
                 v-if="!isEditComment(task.id)"
-                style="width: 270px"
+                style="width: 430px"
               >
                 <input
                   type="image"
@@ -117,13 +118,12 @@
                   src="./pictures/pen_gray.png"
                   @click="editting_comment_id = task.id"
                 />
-                {{ task.comment }}
+                <vue-markdown>{{ task.comment }}</vue-markdown>
               </td>
               <td v-else>
-                <!--FIXME:改行あり文章を入力しても、テーブルで表示すると改行されない-->
                 <textarea
                   style="width: 100%"
-                  rows="5"
+                  rows="20"
                   v-model="task.comment"
                   @blur="editting_comment_id = null"
                 ></textarea>
@@ -184,5 +184,6 @@
   </body>
 <script src="./lib/vue.js"></script>
 <script src="./lib/vue-select.js"></script>
+<script src="lib/vue-markdown.js"></script>
 <script src="./main.js"></script>
 </html>
