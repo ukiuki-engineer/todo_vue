@@ -31,9 +31,9 @@
         <thead>
           <tr class="thead-tr">
             <th style="width: 20px">ID</th>
-            <th style="width: 250px">タスク</th>
+            <th style="width: 300px">タスク</th>
             <th style="width: 100px">ステータス</th>
-            <th style="width: 430px">備考</th>
+            <th style="width: 450px">備考</th>
             <th style="width: 70px; text-align: center;">目標時刻</th>
             <th style="width: 30px"></th>
           </tr>
@@ -104,7 +104,7 @@
               </td>
               <td
                 v-if="!isEditComment(task.id)"
-                style="width: 430px"
+                style="width: 450px"
               >
                 <input
                   type="image"
@@ -118,6 +118,7 @@
                   src="./pictures/pen_gray.png"
                   @click="editting_comment_id = task.id"
                 />
+                <!--memo:閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる-->>
                 <vue-markdown>{{ task.comment }}</vue-markdown>
               </td>
               <td v-else>
