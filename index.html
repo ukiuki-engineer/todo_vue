@@ -145,7 +145,7 @@
                   @keydown.enter="editting_time_id = null"
                   @blur="editting_time_id = null"
                 />
-                {{ editting_time_id != task.id ? task.time ? task.time : 'click me' : '' }}
+                {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
               </td>
               <td style="width: 30px">
                 <input
