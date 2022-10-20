@@ -143,6 +143,7 @@
                   type="time"
                   v-model="task.time"
                   @keydown.enter="editting_time_id = null"
+                  @keydown.escape="editting_time_id = null"
                   @blur="editting_time_id = null"
                 />
                 {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
