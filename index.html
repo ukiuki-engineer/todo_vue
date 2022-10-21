@@ -24,7 +24,6 @@
           v-model=submittedTask
         />
         <!--追加ボタン-->
-        <!--FIXME: ボタン位置がちょっと下になってしまう-->
         <button type="submit" class="btn">Add</button>
       </form>
       <table>
@@ -33,9 +32,9 @@
             <th style="width: 20px">ID</th>
             <th style="width: 300px">タスク</th>
             <th style="width: 100px">ステータス</th>
-            <th style="width: 450px">備考</th>
+            <th style="width: 450px">備考(※markdown可)</th>
             <th style="width: 70px; text-align: center;">目標時刻</th>
-            <th style="width: 30px"></th>
+            <th style="width: 23px"></th>
           </tr>
         </thead>
         <tbody>
@@ -149,9 +148,10 @@
                 />
                 {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
               </td>
-              <td style="width: 30px">
+              <td style="width: 23px">
                 <input 
                   type="checkbox"
+                  class="checkbox"
                   v-model="task.isCheck"
                 >
               </td>

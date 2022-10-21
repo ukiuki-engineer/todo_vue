@@ -180,3 +180,6 @@ i:hover {
   _display: inline;
   transform: translate(0%, 2px);
 }
+.checkbox:hover {
+  cursor: pointer;
+}
