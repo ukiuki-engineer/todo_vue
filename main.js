@@ -88,7 +88,7 @@ new Vue({
         status_id: 0,
         comment: null,
         time: null,
-        // isCheck: false,
+        isCheck: false,
       })
       this.submittedTask = null;
     },
