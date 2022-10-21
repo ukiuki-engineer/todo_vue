@@ -100,9 +100,10 @@ new Vue({
       }
     },
     // タスク削除
-    deleteTask: function(index) {
-      if (confirm("id=" + (index + 1) + "のタスクを削除しても良いですか？")) {
-        this.tasks.splice(index, 1);
+    deleteTask: function() {
+      const message = 'checkされているタスクを全て削除しても良いですか？'
+      if (confirm(message)) {
+        this.tasks = this.tasks.filter(task => task.isCheck == null || task.isCheck == false)
         // ローカルストレージを保存
         taskStorage.save(this.tasks);
         // fetchして更新
@@ -142,22 +143,5 @@ new Vue({
     endTime: function(id) {
       this.editting_time_id = id;
     },
-    checkTask(index, event) {
-      // isCheckが定義されていない場合、isCheckにtrueを入れる
-      if (this.tasks[index].isCheck == null) {
-        this.tasks[index].isCheck = true;
-      // isCheckが定義されている場合、真偽を反転させる
-      } else if(this.tasks[index].isCheck == false) {
-        this.tasks[index].isCheck = true;
-      } else {
-        this.tasks[index].isCheck = false;
-      }
-      // ローカルストレージを保存
-      taskStorage.save(this.tasks);
-      // fetchして更新
-      this.tasks = taskStorage.fetch();
-      // FIXME:備考にmarkdownが書いてあると、一度再読み込みしないと反映されない
-      window.location.reload();
-    }
   }
 });

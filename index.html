@@ -150,23 +150,8 @@
                 {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
               </td>
               <td style="width: 30px">
-                <!-- <input
-                  type="image"
-                  v-if="task.status_id != 2"
-                  src="./pictures/garbage_red.png"
-                  class="icon-delete-task"
-                  @click="deleteTask(index)"
-                />
-                <input
-                  type="image"
-                  v-else
-                  src="./pictures/garbage_black.png"
-                  class="icon-delete-task"
-                  @click="deleteTask(index)"
-                /> -->
                 <input 
                   type="checkbox"
-                  @change="checkTask(index, $event)"
                   v-model="task.isCheck"
                 >
               </td>
@@ -175,7 +160,14 @@
           <tfoot>
             <tr class="tfoot-tr">
               <td class="tfoot-td">
-                全て削除する→
+                "check項目"を全て削除する:
+                <input
+                  type="image"
+                  src="./pictures/garbage_red.png"
+                  class="icon-delete-all"
+                  @click="deleteTask"
+                />
+                "全て"削除する:
                 <input
                   type="image"
                   src="./pictures/garbage_red.png"
