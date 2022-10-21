@@ -30,7 +30,10 @@ thead {
 }
 tbody {
   overflow-y: scroll;
+  height: 70vh;
+  /*
   height: 520px;
+   * */
 }
 td,th {
   /* border-right: 1px #ffffff solid; */
@@ -49,6 +52,10 @@ tr:hover {
 }
 button {
   border-radius: 5px;
+}
+/* アイコン */
+i:hover {
+  cursor: pointer;
 }
 .thead-tr:hover{
   /* background: #080800; */
@@ -165,4 +172,11 @@ button {
 }
 .time:hover {
   cursor: pointer;
+}
+.icon-on-foot {
+  font-size: 18px;
+  color: #ff6347;
+  display: inline-block;
+  _display: inline;
+  transform: translate(0%, 2px);
 }

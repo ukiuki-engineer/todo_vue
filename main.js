@@ -88,15 +88,24 @@ new Vue({
         status_id: 0,
         comment: null,
         time: null,
-        isCheck: false,
+        // isCheck: false,
       })
       this.submittedTask = null;
     },
-    // 全タスク削除
-    deleteAll: function () {
-      if (confirm("全てのタスクを削除しても良いですか？")) {
-        this.tasks = [];
-        taskStorage.uid = 1;
+    // すべてのタスクを選択する
+    checkAll: function() {
+      var flag = true;
+      this.tasks.forEach(task => {
+        flag = flag && task.isCheck;
+      })
+      if(flag == true){
+        this.tasks.forEach(task => {
+          task.isCheck = false;
+        })
+      } else {
+        this.tasks.forEach(task => {
+          task.isCheck = true;
+        })
       }
     },
     // タスク削除

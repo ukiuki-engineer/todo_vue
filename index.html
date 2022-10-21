@@ -160,20 +160,15 @@
           <tfoot>
             <tr class="tfoot-tr">
               <td class="tfoot-td">
+                全て選択する:
+                <div class="icon-on-foot">
+                  <i class="bi bi-check-square" @click="checkAll"></i>
+                </div>
+                <span style="margin-right: 10px"></span>
                 "check項目"を全て削除する:
-                <input
-                  type="image"
-                  src="./pictures/garbage_red.png"
-                  class="icon-delete-all"
-                  @click="deleteTask"
-                />
-                "全て"削除する:
-                <input
-                  type="image"
-                  src="./pictures/garbage_red.png"
-                  class="icon-delete-all"
-                  @click="deleteAll"
-                />
+                  <div class="icon-on-foot">
+                <i class="bi bi-trash icon-trash" @click="deleteTask"></i>
+                </div>
               </td>
             </tr>
           </tfoot>
