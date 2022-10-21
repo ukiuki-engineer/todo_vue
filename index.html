@@ -39,148 +39,148 @@
         </thead>
         <tbody>
           <tr
-              v-for="(task, index) in tasks"
-              draggable
-              :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
-              @dragstart="dragTask($event, index)"
-              @drop="dropTask($event, index)"
-              @dragover.prevent
-              @dragenter.prevent
+            v-for="(task, index) in tasks"
+            draggable
+            :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
+            @dragstart="dragTask($event, index)"
+            @drop="dropTask($event, index)"
+            @dragover.prevent
+            @dragenter.prevent
+          >
+            <td style="width: 20px">
+              {{ task ? task.id : '' }}
+            </td>
+            <td
+              v-if="!isEditTask(task.id)"
+              style="width: 300px"
             >
-              <td style="width: 20px">
-                {{ task ? task.id : '' }}
-              </td>
-              <td
-                v-if="!isEditTask(task.id)"
-                style="width: 300px"
-              >
-                <i
-                  class="bi bi-pencil-fill"
-                  tabindex="0"
-                  @click="editting_task_id = task.id"
-                  @keydown.enter="editting_task_id = task.id"
-                ></i>
-                {{ task ? task.name : '' }}
-                <!--
-                <div v-if="hasSubTasks(task.id)">
-                  <span v-for="subtask in subtasks">
-                    {{ subtask.name }}<br>
-                  </span>
-                </div>
-                -->
-              </td>
-              <td v-else>
-                <input
-                  style="width: 100%"
-                  type="txt"
-                  v-model="task.name"
-                  @blur="editting_task_id = null"
-                  @keydown.enter="onKeydownEnter($event.keyCode, 'name')"
-                />
-              </td>
-              <td style="width: 100px;">
-                <v-select
-                  :class="task.status_id !=4 ? 'v-select' : 'v-select-complete'"
-                  label="name"
-                  :options="statuses"
-                  :reduce="status => status.id"
-                  v-model="task.status_id"
-                  :clearable="false"
-                >
-              <!--memo:
-              :clearable="false" ←クリアボタンの無効化
-              公式サイト
-              https://vue-select.org/api/props.html
-              のpropsは、v-selectタグの属性に```:apiname=指定されている型の値```を入れて使う
-              -->
-                </v-select>
-              </td>
+              <i
+                class="bi bi-pencil-fill"
+                tabindex="0"
+                @click="editting_task_id = task.id"
+                @keydown.enter="editting_task_id = task.id"
+              ></i>
+              {{ task ? task.name : '' }}
               <!--
-                -->
-              <td
-                v-if="!isEditComment(task.id)"
-                style="width: 15px"
+              <div v-if="hasSubTasks(task.id)">
+                <span v-for="subtask in subtasks">
+                  {{ subtask.name }}<br>
+                </span>
+              </div>
+              -->
+            </td>
+            <td v-else>
+              <input
+                style="width: 100%"
+                type="txt"
+                v-model="task.name"
+                @blur="editting_task_id = null"
+                @keydown.enter="onKeydownEnter($event.keyCode, 'name')"
+              />
+            </td>
+            <td style="width: 100px;">
+              <v-select
+                :class="task.status_id !=4 ? 'v-select' : 'v-select-complete'"
+                label="name"
+                :options="statuses"
+                :reduce="status => status.id"
+                v-model="task.status_id"
+                :clearable="false"
               >
-              <!-- memo:tabindex="0"→キーボードの順次ナビゲーションで到達可能に -->
+            <!--memo:
+            :clearable="false" ←クリアボタンの無効化
+            公式サイト
+            https://vue-select.org/api/props.html
+            のpropsは、v-selectタグの属性に```:apiname=指定されている型の値```を入れて使う
+            -->
+              </v-select>
+            </td>
+            <!--
+              -->
+            <td
+              v-if="!isEditComment(task.id)"
+              style="width: 15px"
+            >
+            <!-- memo:tabindex="0"→キーボードの順次ナビゲーションで到達可能に -->
+              <i
+                class="bi bi-pencil-fill"
+                tabindex="0"
+                @click="editting_comment_id = task.id"
+                @keydown.enter="editting_comment_id = task.id"
+              ></i>
+            </td>
+            <td
+              v-else
+            ></td>
+            <td
+              v-if="!isEditComment(task.id)"
+              style="width: 435px"
+            >
+              <!--memo:閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる-->
+              <vue-markdown>{{ task.comment }}</vue-markdown>
+            </td>
+            <td v-else>
+              <textarea
+                style="width: 100%"
+                rows="20"
+                v-model="task.comment"
+                @blur="editting_comment_id = null"
+              ></textarea>
+              <br/>
+              <button @click="editting_comment_id = null">編集完了</button>
+              (またはTabキーで編集を完了する)
+            </td>
+            <td
+              class="time"
+              style="width: 70px;
+              text-align: center;"
+              @click="editTime(task.id)"
+            >
+              <input
+                v-if="editting_time_id == task.id"
+                style="width: 100%"
+                type="time"
+                v-model="task.time"
+                @keydown.enter="editting_time_id = null"
+                @keydown.escape="editting_time_id = null"
+                @blur="editting_time_id = null"
+              />
+              {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
+            </td>
+            <td style="width: 23px">
+              <input 
+                type="checkbox"
+                class="checkbox"
+                v-model="task.isCheck"
+              >
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr class="tfoot-tr">
+            <td class="tfoot-td">
+              全て選択する:
+              <div class="icon-on-foot">
                 <i
-                  class="bi bi-pencil-fill"
-                  tabindex="0"
-                  @click="editting_comment_id = task.id"
-                  @keydown.enter="editting_comment_id = task.id"
-                ></i>
-              </td>
-              <td
-                v-else
-              ></td>
-              <td
-                v-if="!isEditComment(task.id)"
-                style="width: 435px"
-              >
-                <!--memo:閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる-->
-                <vue-markdown>{{ task.comment }}</vue-markdown>
-              </td>
-              <td v-else>
-                <textarea
-                  style="width: 100%"
-                  rows="20"
-                  v-model="task.comment"
-                  @blur="editting_comment_id = null"
-                ></textarea>
-                <br/>
-                <button @click="editting_comment_id = null">編集完了</button>
-                (またはTabキーで編集を完了する)
-              </td>
-              <td
-                class="time"
-                style="width: 70px;
-                text-align: center;"
-                @click="editTime(task.id)"
-              >
-                <input
-                  v-if="editting_time_id == task.id"
-                  style="width: 100%"
-                  type="time"
-                  v-model="task.time"
-                  @keydown.enter="editting_time_id = null"
-                  @keydown.escape="editting_time_id = null"
-                  @blur="editting_time_id = null"
-                />
-                {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
-              </td>
-              <td style="width: 23px">
-                <input 
-                  type="checkbox"
-                  class="checkbox"
-                  v-model="task.isCheck"
-                >
-              </td>
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr class="tfoot-tr">
-              <td class="tfoot-td">
-                全て選択する:
-                <div class="icon-on-foot">
-                  <i
-                    class="bi bi-check-square"
-                    tabindex="0"
-                    @click="checkAll"
-                    @keydown.enter="checkAll"
-                  ></i>
-                </div>
-                <span style="margin-right: 10px"></span>
-                "check項目"を全て削除する:
-                  <div class="icon-on-foot">
-                <i
-                  class="bi bi-trash icon-trash"
-                  tabindex="0"
-                  @click="deleteTask"
-                  @keydown.enter="deleteTask"
-                ></i>
-                </div>
-              </td>
-            </tr>
-          </tfoot>
+                class="bi bi-check-square"
+                tabindex="0"
+                @click="checkAll"
+                @keydown.enter="checkAll"
+              ></i>
+            </div>
+            <span style="margin-right: 10px"></span>
+            "check項目"を全て削除する:
+            <div class="icon-on-foot">
+              <i
+                class="bi bi-trash icon-trash"
+                tabindex="0"
+                @click="deleteTask"
+                @keydown.enter="deleteTask"
+              ></i>
+            </div>
+            </td>
+          </tr>
+        </tfoot>
       </table>
     </div>
   </body>
