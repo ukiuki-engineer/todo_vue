@@ -19,6 +19,7 @@ var taskStorage = {
  * ライブラリのインポート
  */
 Vue.component('v-select', VueSelect.VueSelect);
+// memo:VueMarkdownの場合はVue.component()ではなくVue.use()で読み込む(?)
 // Vue.component('vue-markdown', VueMarkdown);
 Vue.use(VueMarkdown);
 /*
@@ -27,7 +28,6 @@ Vue.use(VueMarkdown);
 new Vue({
   el: '#app',
   data: {
-    test: true,
     tasks: [],
     submittedTask: null,
     statuses: [
@@ -96,17 +96,17 @@ new Vue({
     checkAll: function() {
       var flag = true;
       this.tasks.forEach(task => {
-        flag = flag && task.isCheck;
-      })
-      if(flag == true){
-        this.tasks.forEach(task => {
-          task.isCheck = false;
-        })
-      } else {
-        this.tasks.forEach(task => {
-          task.isCheck = true;
-        })
-      }
+        task.isCheck == undefined ? flag = flag && false : flag = flag && task.isCheck;
+      });
+      this.tasks.forEach((task) => {
+        flag ? task.isCheck = false : task.isCheck = true;
+        // task.isCheck = true;
+      });
+      // FIXME:isCheckがすべてundefinedの場合、LocalStorageを保存&fetchしないとcheckが入らない
+      // ローカルストレージを保存
+      taskStorage.save(this.tasks);
+      // fetchして更新
+      this.tasks = taskStorage.fetch()
     },
     // タスク削除
     deleteTask: function() {
