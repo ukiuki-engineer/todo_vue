@@ -95,12 +95,14 @@ new Vue({
     // すべてのタスクを選択する
     checkAll: function() {
       var flag = true;
+      // 一つでもcheckが入っていなければflag=falseとする
       this.tasks.forEach(task => {
         task.isCheck == undefined ? flag = flag && false : flag = flag && task.isCheck;
       });
+      // 一つでもcheckが入っていなければ全てにcheckを入れる
+      // 全てにcheckが入っていなかったら全てのcheckを外す
       this.tasks.forEach((task) => {
         flag ? task.isCheck = false : task.isCheck = true;
-        // task.isCheck = true;
       });
       // FIXME:isCheckがすべてundefinedの場合、LocalStorageを保存&fetchしないとcheckが入らない
       // ローカルストレージを保存

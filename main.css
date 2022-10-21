@@ -183,3 +183,6 @@ i:hover {
 .checkbox:hover {
   cursor: pointer;
 }
+.bi-pencil-fill {
+  font-size: 13px;
+}
