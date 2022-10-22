@@ -61,13 +61,6 @@
                 @keydown.enter="editting_task_id = task.id"
               ></i>
               {{ task ? task.name : '' }}
-              <!--
-              <div v-if="hasSubTasks(task.id)">
-                <span v-for="subtask in subtasks">
-                  {{ subtask.name }}<br>
-                </span>
-              </div>
-              -->
             </td>
             <td v-else>
               <input

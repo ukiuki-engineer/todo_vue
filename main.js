@@ -37,22 +37,12 @@ new Vue({
       {id: 3, name: '保留'},
       {id: 4, name: '完了'},
     ],
-    subtasks: [
-      {id: 0, name: 'サブタスク1', status_id: 0},
-      {id: 1, name: 'サブタスク2', status_id: 0},
-      {id: 2, name: 'サブタスク3', status_id: 0},
-    ],
     editting_task_id: null,
     editting_comment_id: null,
     editting_time_id: null,
     selectedTasks: [],
   },
   computed: {
-    hasSubTasks: function() {
-      return function(id) {
-        return id == 0 ? true : false;
-      }
-    },
     isEditTask: function() {
       return function(id) {
         return this.editting_task_id ? id == this.editting_task_id : false;
