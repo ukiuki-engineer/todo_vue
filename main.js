@@ -5,9 +5,9 @@ var STORAGE_KEY = 'todo_vue'
 var taskStorage = {
   fetch: function () {
     var tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    tasks.forEach(function (task, index) {
-      task.id = index + 1;
-    })
+    // tasks.forEach(function (task, index) {
+      // task.id = index + 1;
+    // })
     taskStorage.uid = tasks.length + 1;
     return tasks;
   },
@@ -40,7 +40,12 @@ new Vue({
     editting_task_id: null,
     editting_comment_id: null,
     editting_time_id: null,
+    editting_date_id: null,
     selectedTasks: [],
+    sortSettings: {
+      key: null,
+      order: null,
+    }
   },
   computed: {
     isEditTask: function() {
@@ -78,9 +83,15 @@ new Vue({
         status_id: 0,
         comment: null,
         time: null,
+        date: null,
         isCheck: false,
-      })
+      });
       this.submittedTask = null;
+      if (this.sortSettings.key == 'id' && this.sortSettings.order == -1) {
+        this.tasks.sort((a, b) => {
+          return (b.id - a.id);
+        });
+      }
     },
     // すべてのタスクを選択する
     checkAll: function() {
@@ -113,7 +124,14 @@ new Vue({
         window.location.reload();
       }
     },
-    // Enterキー押下時の処理
+    // 現在の並びでタスクをrenumberする
+    // FIXME:日付や時刻が全部nullの時もソートされてしまう
+    renumber: function() {
+      this.tasks.forEach((task, index) => {
+        task.id = index + 1;
+      })
+    },
+    // タスク編集フォームでのEnterキー押下時の処理
     onKeydownEnter: function(keyCode, target) {
       if (keyCode !== 13) return;
       if (target == 'name') {
@@ -141,8 +159,34 @@ new Vue({
       window.location.reload();
     },
     // 時刻編集をオン
-    endTime: function(id) {
+    editTime: function(id) {
       this.editting_time_id = id;
     },
+    editDate: function(id) {
+      this.editting_date_id = id;
+    },
+    // 指定されたキーでソート
+    // FIXME:reload時idが1から順にリナンバーされてしまう
+    sortBy: function(key) {
+      // ソートキーの設定
+      if (this.sortSettings.key == key) {
+        this.sortSettings.order = -1 * this.sortSettings.order;
+      } else if (this.sortSettings.key = null || this.sortSettings.key != key) {
+        this.sortSettings.order = 1;
+      }
+      this.sortSettings.key = key;
+      // FIXME:markdownの影響なのか、commentは上手くソートできない
+      // FIXME:時刻をソートできるようにする
+      // ソート
+      if (key == 'name' || key == 'time' || key == 'date') {
+        this.tasks.sort((a, b) => {
+          return a[key] > b[key] ? this.sortSettings.order * 1 : this.sortSettings.order * -1;
+        });
+      } else {
+        this.tasks.sort((a, b) => {
+          return this.sortSettings.order * (a[key] - b[key]);
+        });
+      }
+    }
   }
 });

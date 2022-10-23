@@ -2,7 +2,7 @@ main {
   box-sizing: border-box;
 }
 #app {
-  max-width: 1020px;
+  max-width: 1090px;
   margin: 0 auto;
 }
 body {
@@ -37,6 +37,11 @@ tbody {
 }
 td,th {
   /* border-right: 1px #ffffff solid; */
+}
+.th-sort:hover{
+  color: #00ffff;
+  cursor: pointer;
+  text-decoration: underline;
 }
 td {
   border-bottom: 1px #35332d solid;
@@ -166,23 +171,30 @@ i:hover {
   _display: inline;
   transform: translate(0%, 2px);
 }
-.input-time {
+.input-time, .input-date {
   background: #080800;
   color:#ffffff
 }
-.time:hover {
+.time:hover, .date:hover {
   cursor: pointer;
 }
 .icon-on-foot {
-  font-size: 18px;
+  font-size: 20px;
   color: #ff6347;
   display: inline-block;
   _display: inline;
-  transform: translate(0%, 2px);
+  transform: translate(0%, 3px);
+}
+.icon-renumber {
+  font-size: 20px;
+  color: #ff6347;
+  display: inline-block;
+  _display: inline;
+  transform: translate(0%, 5px);
 }
 .checkbox:hover {
   cursor: pointer;
 }
 .bi-pencil-fill {
-  font-size: 13px;
+  font-size: 14px;
 }

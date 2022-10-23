@@ -29,11 +29,12 @@
       <table>
         <thead>
           <tr class="thead-tr">
-            <th style="width: 20px">ID</th>
-            <th style="width: 300px">タスク</th>
-            <th style="width: 100px">ステータス</th>
+            <th style="width: 20px"><span class="th-sort" @click="sortBy('id')">ID</span></th>
+            <th style="width: 300px" ><span class="th-sort" @click="sortBy('name')">タスク</span></th>
+            <th style="width: 100px"><span class="th-sort" @click="sortBy('status_id')">ステータス</span></th>
             <th style="width: 450px" colspan="2">備考(※markdown可)</th>
-            <th style="width: 70px; text-align: center;">目標時刻</th>
+            <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('time')">目標時刻</span></th>
+            <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('date')">期日</span></th>
             <th style="width: 23px"></th>
           </tr>
         </thead>
@@ -140,6 +141,23 @@
               />
               {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
             </td>
+            <td
+              class="date"
+              style="width: 70px;
+              text-align: center;"
+              @click="editDate(task.id)"
+            >
+              <input
+                v-if="editting_date_id == task.id"
+                style="width: 100%"
+                type="date"
+                v-model="task.date"
+                @keydown.enter="editting_date_id = null"
+                @keydown.escape="editting_date_id = null"
+                @blur="editting_date_id = null"
+              />
+              {{ editting_date_id != task.id ? task.date ? task.date.substr(5, 5) : '--:--' : '' }}
+            </td>
             <td style="width: 23px">
               <input 
                 type="checkbox"
@@ -165,10 +183,20 @@
             "check項目"を全て削除する:
             <div class="icon-on-foot">
               <i
-                class="bi bi-trash icon-trash"
+                class="bi bi-trash"
                 tabindex="0"
                 @click="deleteTask"
                 @keydown.enter="deleteTask"
+              ></i>
+            </div>
+            <span style="margin-right: 10px"></span>
+            現在の並びでidを振り直す:
+            <div class="icon-renumber">
+              <i
+                class="bi bi-list-ol"
+                tabindex="0"
+                @click="renumber"
+                @keydown.enter="renumber"
               ></i>
             </div>
             </td>
