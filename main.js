@@ -58,14 +58,48 @@ new Vue({
         return this.editting_comment_id ? id == this.editting_comment_id : false;
       }
     },
+    allTasks: function() {
+      let allTasks = [];
+      this.tasks.forEach((task) => {
+        // taskをpush
+        allTasks.push({
+          id: task.id,
+          name: task.name,
+          status_id: task.status_id,
+          comment: task.comment,
+          time: task.time,
+          date: task.date,
+          isCheck: task.isCheck,
+        });
+        // subtaskがある場合
+        if (task.subtasks.length > 1) {
+          task.subtasks.forEach((subtask, index) => {
+            let subtask_id = index + 1;
+            allTasks.push({
+              id: task.id + '-' + subtask_id,
+              name: subtask.name,
+              status_id: subtask.status_id,
+              comment: subtask.comment,
+              time: subtask.time,
+              date: subtask.date,
+              isCheck: subtask.isCheck,
+              parent_id: task.id,
+            });
+          });
+        }
+      });
+      return allTasks;
+    },
   },
   watch: {
+    // tasksが変更されると自動的にsaveする
     tasks: {
+      // handlerはdeepやimmediateなどのオプションを使用する時になるオブジェクト
       // 引数はウォッチしているプロパティの変更後の値
       handler: function (tasks) {
         taskStorage.save(tasks)
       },
-      // deep オプションでネストしているデータも監視できる
+      // 指定したプロパティの中にある、プロパティの値も監視する（入れ子・ネストしたプロパティ）
       deep: true
     }
   },
@@ -85,6 +119,35 @@ new Vue({
         time: null,
         date: null,
         isCheck: false,
+        subtasks: [
+          {
+            id: 1,
+            name: 'サブタスク1',
+            status_id: 0,
+            comment: null,
+            time: null,
+            date: null,
+            isCheck: false,
+          },
+          {
+            id: 2,
+            name: 'サブタスク2',
+            status_id: 0,
+            comment: null,
+            time: null,
+            date: null,
+            isCheck: false,
+          },
+          {
+            id: 3,
+            name: 'サブタスク3',
+            status_id: 0,
+            comment: null,
+            time: null,
+            date: null,
+            isCheck: false,
+          },
+        ],
       });
       this.submittedTask = null;
       if (this.sortSettings.key == 'id' && this.sortSettings.order == -1) {

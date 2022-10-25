@@ -39,6 +39,11 @@
           </tr>
         </thead>
         <tbody>
+          <!--
+            memo:サブタスクの表示/非表示は:classに条件を追加して実装する
+            :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4, 'subtask-test': task.id == 1}"
+            v-for="(task, index) in allTasks"
+          -->
           <tr
             v-for="(task, index) in tasks"
             draggable

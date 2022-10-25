@@ -198,3 +198,6 @@ i:hover {
 .bi-pencil-fill {
   font-size: 14px;
 }
+.subtask-test {
+  display: none;
+}
