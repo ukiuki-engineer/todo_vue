@@ -60,12 +60,14 @@ new Vue({
     },
   },
   watch: {
+    // tasksが変更されると自動的にsaveする
     tasks: {
+      // handlerはdeepやimmediateなどのオプションを使用する時になるオブジェクト
       // 引数はウォッチしているプロパティの変更後の値
       handler: function (tasks) {
         taskStorage.save(tasks)
       },
-      // deep オプションでネストしているデータも監視できる
+      // 指定したプロパティの中にある、プロパティの値も監視する（入れ子・ネストしたプロパティ）
       deep: true
     }
   },

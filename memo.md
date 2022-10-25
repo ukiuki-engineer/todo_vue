@@ -49,6 +49,20 @@
 #### 実装案
 - trタグに```:class=```を追加し、表示/非表示を切り替える
 - サブタスクはid=nullとする
+→addTaskの処理変更
+- task = {}の中に、subtasksを入れれない
+tasksとは別にallTasksを作成
+→タスク、サブタスクを順に並べた配列
+```html
+<tr v-for=task in allTasks :class=isShowSubtask()>
+</tr>
+```
+
+#### サブタスク機能実装に伴う修正等
+- addTask
+idをlengthではなく、idの一番大きい数字+1に
+- renumber
+id=nullにはidをつけない
 
 ## Git運用ルール
 ### 参考
