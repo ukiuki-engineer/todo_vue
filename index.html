@@ -42,10 +42,10 @@
           <tr
             v-for="(task, index) in tasks"
             draggable
-            :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4}"
+            :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4, 'dragover' : dragoverIndex == index}"
             @dragstart="dragTask($event, index)"
             @drop="dropTask($event, index)"
-            @dragover.prevent
+            @dragover.prevent="dragover(index)"
             @dragenter.prevent
           >
             <td style="width: 20px">

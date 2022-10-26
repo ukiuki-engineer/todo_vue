@@ -34,7 +34,8 @@
 - bootstrapでUIを一新  
 →index_bootstrap.htmlで作業中  
 　追加機能や既存機能の修正は一旦index.htmlで
-- vuedraggableみたいに、ドラッグにアニメーションを入れたい
+- ~~vuedraggableみたいに、ドラッグにアニメーションを入れたい~~
+→CSSで実装
 
 ## サブタスク機能
 #### 機能

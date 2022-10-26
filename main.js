@@ -45,7 +45,8 @@ new Vue({
     sortSettings: {
       key: null,
       order: null,
-    }
+    },
+    dragoverIndex: null,
   },
   computed: {
     isEditTask: function() {
@@ -150,6 +151,7 @@ new Vue({
     },
     // 行ドロップ時の挙動
     dropTask: function(event, dropIndex) {
+      this.dragoverIndex = null;
       const dragIndex = event.dataTransfer.getData('drag-index')
       const deleteTask = this.tasks.splice(dragIndex, 1);
       this.tasks.splice(dropIndex, 0, deleteTask[0])
@@ -189,6 +191,9 @@ new Vue({
           return this.sortSettings.order * (a[key] - b[key]);
         });
       }
+    },
+    dragover: function(index) {
+      this.dragoverIndex = index;
     }
   }
 });
