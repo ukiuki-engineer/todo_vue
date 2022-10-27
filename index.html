@@ -29,7 +29,7 @@
       <table>
         <thead>
           <tr class="thead-tr">
-            <th style="width: 20px"><span class="th-sort" @click="sortBy('id')">ID</span></th>
+            <th style="width: 23px"><span class="th-sort" @click="sortBy('id')">No.</span></th>
             <th style="width: 300px" ><span class="th-sort" @click="sortBy('name')">タスク</span></th>
             <th style="width: 100px"><span class="th-sort" @click="sortBy('status_id')">ステータス</span></th>
             <th style="width: 450px" colspan="2">備考(※markdown可)</th>
@@ -48,7 +48,7 @@
             @dragover.prevent="dragover(index)"
             @dragenter.prevent
           >
-            <td style="width: 20px">
+            <td style="width: 23px">
               {{ task ? task.id : '' }}
             </td>
             <td
@@ -190,7 +190,7 @@
               ></i>
             </div>
             <span style="margin-right: 10px"></span>
-            現在の並びでidを振り直す:
+            現在の並びでNo.を振り直す:
             <div class="icon-renumber">
               <i
                 class="bi bi-list-ol"
