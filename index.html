@@ -29,7 +29,7 @@
           <tr class="thead-tr">
             <th style="width: 23px"><span class="th-sort" @click="sortBy('id')">No.</span></th>
             <th style="width: 300px" ><span class="th-sort" @click="sortBy('name')">タスク</span></th>
-            <th style="width: 100px"><span class="th-sort" @click="sortBy('status_id')">ステータス</span></th>
+            <th style="width: 80px"><span class="th-sort" @click="sortBy('status_id')">ステータス</span></th>
             <th style="width: 450px" colspan="2">備考(※markdown可)</th>
             <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('time')">目標時刻</span></th>
             <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('date')">期日</span></th>
@@ -70,7 +70,7 @@
                 @keydown.enter="onKeydownEnter($event.keyCode, 'name')"
               />
             </td>
-            <td style="width: 100px;">
+            <td style="width: 80px;">
               <!--memo:
               :clearable="false" ←クリアボタンの無効化
               公式サイト

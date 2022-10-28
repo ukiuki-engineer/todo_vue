@@ -2,7 +2,7 @@ main {
   box-sizing: border-box;
 }
 #app {
-  max-width: 1090px;
+  max-width: 1065px;
   margin: 0 auto;
 }
 body {
@@ -169,6 +169,10 @@ button {
   /* Font */
   --vs-font-size: 0.8rem;
   --vs-line-height: 1.0;
+}
+.v-select .vs__selected-options {
+    flex-wrap: nowrap;
+    white-space: nowrap;
 }
 
 /* bootstrapのアイコン */
