@@ -10,9 +10,7 @@
   <body>
     <div id="app">
       <h1>
-        <div class="icon-todo">
-          <i class="bi bi-check2-circle"></i>
-        </div>
+        <i class="bi bi-check2-circle"></i>
         ToDo
       </h1>
       <form class="add-form" v-on:submit.prevent="addTask">
@@ -171,34 +169,28 @@
           <tr class="tfoot-tr">
             <td class="tfoot-td">
               全て選択する:
-              <div class="icon-on-foot">
-                <i
+              <i
                 class="bi bi-check-square"
                 tabindex="0"
                 @click="checkAll"
                 @keydown.enter="checkAll"
               ></i>
-            </div>
-            <span style="margin-right: 10px"></span>
-            "check項目"を全て削除する:
-            <div class="icon-on-foot">
+              <span style="margin-right: 10px"></span>
+              "check項目"を全て削除する:
               <i
                 class="bi bi-trash"
                 tabindex="0"
                 @click="deleteTask"
                 @keydown.enter="deleteTask"
               ></i>
-            </div>
-            <span style="margin-right: 10px"></span>
-            現在の並びでNo.を振り直す:
-            <div class="icon-renumber">
+              <span style="margin-right: 10px"></span>
+              現在の並びでNo.を振り直す:
               <i
                 class="bi bi-list-ol"
                 tabindex="0"
                 @click="renumber"
                 @keydown.enter="renumber"
               ></i>
-            </div>
             </td>
           </tr>
         </tfoot>

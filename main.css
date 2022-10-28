@@ -58,10 +58,6 @@ tr:hover {
 button {
   border-radius: 5px;
 }
-/* アイコン */
-i:hover {
-  cursor: pointer;
-}
 .thead-tr:hover{
   /* background: #080800; */
   background: #212529;
@@ -78,6 +74,56 @@ i:hover {
   border-right: none;
   font-size: 12px;
 }
+/* ステータスに応じた色 */
+.status-doing {
+  background: #ff0000;
+}
+.status-complete {
+  color: gray;
+  background: #35332d;
+}
+.input-time, .input-date {
+  background: #080800;
+  color:#ffffff
+}
+.time:hover, .date:hover {
+  cursor: pointer;
+}
+.checkbox:hover {
+  cursor: pointer;
+}
+.dragover {
+  -webkit-transform: translateY(-5px);
+  -ms-transform: translateY(-5px);
+  transform: scale3d(1.007, 1.3, 1.3);
+}
+
+/* ボタン */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.8rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  text-align: center;
+  text-decoration: none;
+  color: #000000;
+  backface-visibility: hidden;
+  border: 0.3rem solid transparent;
+  border-radius: 3rem;
+  border-color: #ffffff;
+  /*
+  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
+  */
+}
+.btn:hover {
+  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+  cursor: pointer;
+}
+
+/* vue-select */
 .v-select {
   --vs-controls-color: #ffffff;
   /*
@@ -124,82 +170,34 @@ i:hover {
   --vs-font-size: 0.8rem;
   --vs-line-height: 1.0;
 }
-/* ボタン */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.2rem 0.8rem;
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-size: 12px;
-  text-align: center;
-  text-decoration: none;
-  color: #000000;
-  backface-visibility: hidden;
-  border: 0.3rem solid transparent;
-  border-radius: 3rem;
-  border-color: #ffffff;
-  /*
-  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
-  */
-}
-.btn:hover {
-  transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
+
+/* bootstrapのアイコン */
+i:hover {
   cursor: pointer;
 }
-/* ステータスに応じた色 */
-.status-doing {
-  background: #ff0000;
-}
-.status-complete {
-  color: gray;
-  background: #35332d;
-}
-/* ゴミ箱のアイコン */
-.icon-delete-all {
-  width: 3%;
-  transform: translate(0%, 20%);
-}
-.icon-delete-task {
-  text-align: center;
-  width: 70%;
-  transform: translate(20%, 0%);
-}
-.icon-todo {
+.bi-check2-circle {
+  font-size: 40px;
   display: inline-block;
   _display: inline;
   transform: translate(0%, 2px);
 }
-.input-time, .input-date {
-  background: #080800;
-  color:#ffffff
+.bi-check2-circle:hover {
+  cursor: default;
 }
-.time:hover, .date:hover {
-  cursor: pointer;
+.bi-pencil-fill {
+  font-size: 14px;
 }
-.icon-on-foot {
+.bi-check-square, .bi-trash {
   font-size: 20px;
   color: #ff6347;
   display: inline-block;
   _display: inline;
   transform: translate(0%, 3px);
 }
-.icon-renumber {
-  font-size: 20px;
+.bi-list-ol {
+  font-size: 26px;
   color: #ff6347;
   display: inline-block;
   _display: inline;
-  transform: translate(0%, 5px);
-}
-.checkbox:hover {
-  cursor: pointer;
-}
-.bi-pencil-fill {
-  font-size: 14px;
-}
-.dragover {
-  -webkit-transform: translateY(-5px);
-  -ms-transform: translateY(-5px);
-  transform: scale3d(1.007, 1.3, 1.3);
+  transform: translate(0%, 6px);
 }
