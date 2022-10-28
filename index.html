@@ -71,6 +71,12 @@
               />
             </td>
             <td style="width: 100px;">
+              <!--memo:
+              :clearable="false" ←クリアボタンの無効化
+              公式サイト
+              https://vue-select.org/api/props.html
+              のpropsは、v-selectタグの属性に```:apiname=指定されている型の値```を入れて使う
+              -->
               <v-select
                 :class="task.status_id !=4 ? 'v-select' : 'v-select-complete'"
                 label="name"
@@ -79,21 +85,13 @@
                 v-model="task.status_id"
                 :clearable="false"
               >
-            <!--memo:
-            :clearable="false" ←クリアボタンの無効化
-            公式サイト
-            https://vue-select.org/api/props.html
-            のpropsは、v-selectタグの属性に```:apiname=指定されている型の値```を入れて使う
-            -->
               </v-select>
             </td>
-            <!--
-              -->
             <td
               v-if="!isEditComment(task.id)"
               style="width: 15px"
             >
-            <!-- memo:tabindex="0"→キーボードの順次ナビゲーションで到達可能に -->
+              <!-- memo:tabindex="0"→キーボードの順次ナビゲーションで到達可能に -->
               <i
                 class="bi bi-pencil-fill"
                 tabindex="0"
@@ -101,14 +99,13 @@
                 @keydown.enter="editting_comment_id = task.id"
               ></i>
             </td>
-            <td
-              v-else
-            ></td>
+            <td v-else></td>
             <td
               v-if="!isEditComment(task.id)"
               style="width: 435px"
             >
-              <!--memo:閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる-->
+              <!-- MarkDown表示 -->
+              <!-- memo:閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる -->
               <vue-markdown>{{ task.comment }}</vue-markdown>
             </td>
             <td v-else>
@@ -197,8 +194,8 @@
       </table>
     </div>
   </body>
-<script src="./lib/vue.js"></script>
-<script src="./lib/vue-select.js"></script>
-<script src="lib/vue-markdown.js"></script>
-<script src="./main.js"></script>
+  <script src="./lib/vue.js"></script>
+  <script src="./lib/vue-select.js"></script>
+  <script src="lib/vue-markdown.js"></script>
+  <script src="./main.js"></script>
 </html>

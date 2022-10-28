@@ -170,7 +170,6 @@ new Vue({
       this.editting_date_id = id;
     },
     // 指定されたキーでソート
-    // FIXME:reload時idが1から順にリナンバーされてしまう
     sortBy: function(key) {
       // ソートキーの設定
       if (this.sortSettings.key == key) {
