@@ -6,37 +6,19 @@ main {
   margin: 0 auto;
 }
 body {
-  /*
-  background: #35332d;
-  background: #000000;
-  */
-  /* background: #080800; */
   background: #212529;
   color: #ffffff;
 }
 table {
-  /*
-  background: #808080;
-  */
-  /* background: #35332d; */
-  /* border: 2px #ffffff solid; */
-  /* border-radius: 5px; */
   font-size: 12px;
   word-break:break-word;
 }
 thead {
-  /* background: #664cc3; */
   border-bottom: 2px #ffffff solid;
 }
 tbody {
   overflow-y: scroll;
   height: 70vh;
-  /*
-  height: 520px;
-   * */
-}
-td,th {
-  /* border-right: 1px #ffffff solid; */
 }
 .th-sort:hover{
   color: #00ffff;
@@ -58,18 +40,15 @@ tr:hover {
 button {
   border-radius: 5px;
 }
+
 .thead-tr:hover{
-  /* background: #080800; */
   background: #212529;
 }
 .tfoot-tr:hover{
-  /* background: #080800; */
   background: #212529;
 }
 .tfoot-td {
-  /* background: #080800; */
   color: #ffffff;
-  /* border-top: 1px #ffffff solid; */
   border-bottom: none;
   border-right: none;
   font-size: 12px;
@@ -114,9 +93,6 @@ button {
   border: 0.3rem solid transparent;
   border-radius: 3rem;
   border-color: #ffffff;
-  /*
-  transition: transform 0.2s cubic-bezier(0.235, 0, 0.05, 0.95);
-  */
 }
 .btn:hover {
   transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
@@ -126,9 +102,6 @@ button {
 /* vue-select */
 .v-select {
   --vs-controls-color: #ffffff;
-  /*
-  --vs-border-color: #ffffff;
-  */
   --vs-border: none;
 
   --vs-dropdown-bg: #282c34;
@@ -147,28 +120,9 @@ button {
   --vs-font-size: 0.8rem;
   --vs-line-height: 1.0;
 }
-.v-select-complete {
+.v-select.complete {
   --vs-controls-color: gray;
-  /*
-  --vs-border-color: #ffffff;
-  */
-  --vs-border: none;
-
-  --vs-dropdown-bg: #282c34;
-  --vs-dropdown-color: #cc99cd;
-  --vs-dropdown-option-color: #ffffff;
-
-  --vs-selected-bg: #664cc3;
   --vs-selected-color: gray;
-
-  --vs-search-input-color: #eeeeee;
-
-  --vs-dropdown-option--active-bg: #664cc3;
-  --vs-dropdown-option--active-color: #eeeeee;
-
-  /* Font */
-  --vs-font-size: 0.8rem;
-  --vs-line-height: 1.0;
 }
 .v-select .vs__selected-options {
     flex-wrap: nowrap;

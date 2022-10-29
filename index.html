@@ -78,7 +78,7 @@
               のpropsは、v-selectタグの属性に```:apiname=指定されている型の値```を入れて使う
               -->
               <v-select
-                :class="task.status_id !=4 ? 'v-select' : 'v-select-complete'"
+                :class="task.status_id !=4 ? 'v-select' : 'complete'"
                 label="name"
                 :options="statuses"
                 :reduce="status => status.id"
