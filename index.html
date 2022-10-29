@@ -27,9 +27,9 @@
       <table>
         <thead>
           <tr class="thead-tr">
-            <th style="width: 23px"><span class="th-sort" @click="sortBy('id')">No.</span></th>
+            <th style="width: 30px"><span class="th-sort" @click="sortBy('id')">No.</span></th>
             <th style="width: 300px" ><span class="th-sort" @click="sortBy('name')">タスク</span></th>
-            <th style="width: 80px"><span class="th-sort" @click="sortBy('status_id')">ステータス</span></th>
+            <th style="width: 102px; text-align: center;"><span class="th-sort" @click="sortBy('status_id')">ステータス</span></th>
             <th style="width: 450px" colspan="2">備考(※markdown可)</th>
             <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('time')">目標時刻</span></th>
             <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('date')">期日</span></th>
@@ -46,7 +46,7 @@
             @dragover.prevent="dragover(index)"
             @dragenter.prevent
           >
-            <td style="width: 23px">
+            <td style="width: 30px">
               {{ task ? task.id : '' }}
             </td>
             <td
@@ -70,7 +70,7 @@
                 @keydown.enter="onKeydownEnter($event.keyCode, 'name')"
               />
             </td>
-            <td style="width: 80px;">
+            <td style="width: 102px;">
               <!--memo:
               :clearable="false" ←クリアボタンの無効化
               公式サイト
@@ -78,6 +78,7 @@
               のpropsは、v-selectタグの属性に```:apiname=指定されている型の値```を入れて使う
               -->
               <v-select
+                style="width: 100%"
                 :class="task.status_id !=4 ? 'v-select' : 'complete'"
                 label="name"
                 :options="statuses"
@@ -99,7 +100,7 @@
                 @keydown.enter="editting_comment_id = task.id"
               ></i>
             </td>
-            <td v-else></td>
+            <td v-else style="width: 15px"></td>
             <td
               v-if="!isEditComment(task.id)"
               style="width: 435px"
@@ -110,7 +111,7 @@
             </td>
             <td v-else>
               <textarea
-                style="width: 450px"
+                style="width: 435px"
                 rows="20"
                 v-model="task.comment"
                 @blur="editting_comment_id = null"
