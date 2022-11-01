@@ -39,6 +39,7 @@
         <tbody>
           <tr
             v-for="(task, index) in tasks"
+            :key="task"
             :draggable="editting_task_id == task.id || editting_comment_id == task.id || editting_time_id == task.id || editting_date_id == task.id ? false : true"
             :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4, 'dragover' : dragoverIndex == index}"
             @dragstart="dragTask($event, index)"
