@@ -79,9 +79,11 @@ new Vue({
   methods: {
     // タスク追加
     addTask: function() {
+      // タスクidの配列
+      let taskIds = this.tasks.map(task => task["id"]);
+      // タスク追加
       this.tasks.push({
-        // id: taskStorage.uid++,
-        id: this.tasks.length + 1,
+        id: Math.max(...taskIds) + 1, // 既存idの最大値+1を新idに
         name: this.submittedTask,
         status_id: 0,
         comment: null,
