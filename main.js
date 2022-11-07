@@ -83,7 +83,7 @@ new Vue({
       let taskIds = this.tasks.map(task => task["id"]);
       // タスク追加
       this.tasks.push({
-        id: Math.max(...taskIds) + 1, // 既存idの最大値+1を新idに
+        id: this.tasks.length == 0 ? 1 : Math.max(...taskIds) + 1, // 既存idの最大値+1を新idに
         name: this.submittedTask,
         status_id: 0,
         comment: null,
