@@ -20,11 +20,6 @@ tbody {
   overflow-y: scroll;
   height: 70vh;
 }
-.th-sort:hover{
-  color: #00ffff;
-  cursor: pointer;
-  text-decoration: underline;
-}
 td {
   border-bottom: 1px #35332d solid;
 }
@@ -41,6 +36,11 @@ button {
   border-radius: 5px;
 }
 
+.th-sort:hover{
+  color: #00ffff;
+  cursor: pointer;
+  text-decoration: underline;
+}
 .thead-tr:hover{
   background: #212529;
 }
@@ -98,7 +98,10 @@ button {
   transform: perspective(1px) scale3d(1.044, 1.044, 1) translateZ(0) !important;
   cursor: pointer;
 }
-
+/* v-cloak */
+[v-cloak] {
+  display: none;
+}
 /* vue-select */
 .v-select {
   --vs-controls-color: #ffffff;
