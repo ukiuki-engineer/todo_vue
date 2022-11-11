@@ -99,12 +99,12 @@ new Vue({
     checkAll: function() {
       // 一つでもcheckが入っているのかいないのか
       let flag = true;
-      this.tasks.map(task => {
+      this.tasks.forEach(task => {
         task.isCheck == undefined ? flag = flag && false : flag = flag && task.isCheck;
       });
       // 一つでもcheckが入っていなければ全てにcheckを入れる
       // 全てにcheckが入っていなかったら全てのcheckを外す
-      this.tasks.map(task => {
+      this.tasks.forEach(task => {
         flag ? task.isCheck = false : task.isCheck = true;
       });
     },
@@ -118,7 +118,7 @@ new Vue({
     // 現在の並びでタスクをrenumberする
     // FIXME:日付や時刻が全部nullの時もソートされてしまう
     renumber: function() {
-      this.tasks.map((task, index) => {
+      this.tasks.forEach((task, index) => {
         task.id = index + 1;
       })
     },
