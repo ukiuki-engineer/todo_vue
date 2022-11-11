@@ -116,10 +116,6 @@ new Vue({
       const message = 'checkされているタスクを全て削除しても良いですか？'
       if (confirm(message)) {
         this.tasks = this.tasks.filter(task => task.isCheck == null || task.isCheck == false)
-        // ローカルストレージを保存
-        taskStorage.save(this.tasks);
-        // fetchして更新
-        this.tasks = taskStorage.fetch()
       }
     },
     // 現在の並びでタスクをrenumberする
@@ -150,10 +146,6 @@ new Vue({
       const dragIndex = event.dataTransfer.getData('drag-index')
       const deleteTask = this.tasks.splice(dragIndex, 1);
       this.tasks.splice(dropIndex, 0, deleteTask[0])
-      // ローカルストレージを保存
-      taskStorage.save(this.tasks);
-      // fetchして更新
-      this.tasks = taskStorage.fetch();
     },
     // 時刻編集をオン
     editTime: function(task_id) {
@@ -184,6 +176,7 @@ new Vue({
         });
       }
     },
+    // ドラッグオーバーした行を記録
     dragover: function(index) {
       this.dragoverIndex = index;
     }
