@@ -40,7 +40,7 @@
           <tr
             v-for="(task, index) in tasks"
             :key="task.id"
-            :draggable="editting_task_id == task.id || editting_comment_id == task.id || editting_time_id == task.id || editting_date_id == task.id ? false : true"
+            :draggable="editting_task_id == task.id || editting_comment_task_id == task.id || editting_time_task_id == task.id || editting_date_task_id == task.id ? false : true"
             :class="{'status-doing': task.status_id == 2, 'status-complete': task.status_id == 4, 'dragover' : dragoverIndex == index}"
             @dragstart="dragTask($event, index)"
             @drop="dropTask($event, index)"
@@ -97,8 +97,8 @@
               <i
                 class="bi bi-pencil-fill"
                 tabindex="0"
-                @click="editting_comment_id = task.id"
-                @keydown.enter="editting_comment_id = task.id"
+                @click="editting_comment_task_id = task.id"
+                @keydown.enter="editting_comment_task_id = task.id"
               ></i>
             </td>
             <td v-else style="width: 15px"></td>
@@ -115,10 +115,10 @@
                 style="width: 435px"
                 rows="20"
                 v-model="task.comment"
-                @blur="editting_comment_id = null"
+                @blur="editting_comment_task_id = null"
               ></textarea>
               <br/>
-              <button @click="editting_comment_id = null">編集完了</button>
+              <button @click="editting_comment_task_id = null">編集完了</button>
               (またはTabキーで編集を完了する)
             </td>
             <td
@@ -128,15 +128,15 @@
               @click="editTime(task.id)"
             >
               <input
-                v-if="editting_time_id == task.id"
+                v-if="editting_time_task_id == task.id"
                 style="width: 100%"
                 type="time"
                 v-model="task.time"
-                @keydown.enter="editting_time_id = null"
-                @keydown.escape="editting_time_id = null"
-                @blur="editting_time_id = null"
+                @keydown.enter="editting_time_task_id = null"
+                @keydown.escape="editting_time_task_id = null"
+                @blur="editting_time_task_id = null"
               />
-              {{ editting_time_id != task.id ? task.time ? task.time : '--:--' : '' }}
+              {{ editting_time_task_id != task.id ? task.time ? task.time : '--:--' : '' }}
             </td>
             <td
               class="date"
@@ -145,15 +145,15 @@
               @click="editDate(task.id)"
             >
               <input
-                v-if="editting_date_id == task.id"
+                v-if="editting_date_task_id == task.id"
                 style="width: 100%"
                 type="date"
                 v-model="task.date"
-                @keydown.enter="editting_date_id = null"
-                @keydown.escape="editting_date_id = null"
-                @blur="editting_date_id = null"
+                @keydown.enter="editting_date_task_id = null"
+                @keydown.escape="editting_date_task_id = null"
+                @blur="editting_date_task_id = null"
               />
-              {{ editting_date_id != task.id ? task.date ? task.date.substr(5, 5) : '--:--' : '' }}
+              {{ editting_date_task_id != task.id ? task.date ? task.date.substr(5, 5) : '--:--' : '' }}
             </td>
             <td style="width: 23px">
               <input 
