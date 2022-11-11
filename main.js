@@ -5,9 +5,6 @@ var STORAGE_KEY = 'todo_vue'
 var taskStorage = {
   fetch: function () {
     var tasks = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-    // tasks.forEach(function (task, index) {
-      // task.id = index + 1;
-    // })
     taskStorage.uid = tasks.length + 1;
     return tasks;
   },
@@ -107,7 +104,7 @@ new Vue({
       });
       // 一つでもcheckが入っていなければ全てにcheckを入れる
       // 全てにcheckが入っていなかったら全てのcheckを外す
-      this.tasks.forEach((task) => {
+      this.tasks.map(task => {
         flag ? task.isCheck = false : task.isCheck = true;
       });
     },
@@ -121,7 +118,7 @@ new Vue({
     // 現在の並びでタスクをrenumberする
     // FIXME:日付や時刻が全部nullの時もソートされてしまう
     renumber: function() {
-      this.tasks.forEach((task, index) => {
+      this.tasks.map((task, index) => {
         task.id = index + 1;
       })
     },
