@@ -38,9 +38,9 @@ new Vue({
       {id: 4, name: '4:完了'},
     ],
     editting_task_id: null,
-    editting_comment_id: null,
-    editting_time_id: null,
-    editting_date_id: null,
+    editting_comment_task_id: null,
+    editting_time_task_id: null,
+    editting_date_task_id: null,
     selectedTasks: [],
     sortSettings: {
       key: null,
@@ -50,13 +50,13 @@ new Vue({
   },
   computed: {
     isEditTask: function() {
-      return function(id) {
-        return this.editting_task_id ? id == this.editting_task_id : false;
+      return function(task_id) {
+        return this.editting_task_id ? task_id == this.editting_task_id : false;
       }
     },
     isEditComment: function() {
-      return function(id) {
-        return this.editting_comment_id ? id == this.editting_comment_id : false;
+      return function(task_id) {
+        return this.editting_comment_task_id ? task_id == this.editting_comment_task_id : false;
       }
     },
   },
@@ -140,7 +140,7 @@ new Vue({
       if (target == 'name') {
         this.editting_task_id = null;
       } else {
-        this.editting_comment_id = null;
+        this.editting_comment_task_id = null;
       }
     },
     // 行ドラッグ時の挙動
@@ -161,18 +161,18 @@ new Vue({
       this.tasks = taskStorage.fetch();
     },
     // 時刻編集をオン
-    editTime: function(id) {
-      this.editting_time_id = id;
+    editTime: function(task_id) {
+      task_id = this.editting_time_task_id;
     },
-    editDate: function(id) {
-      this.editting_date_id = id;
+    editDate: function(task_id) {
+      task_id = this.editting_date_task_id;
     },
     // 指定されたキーでソート
     sortBy: function(key) {
       // ソートキーの設定
-      if (this.sortSettings.key == key) {
+      if (key == this.sortSettings.key) {
         this.sortSettings.order = -1 * this.sortSettings.order;
-      } else if (this.sortSettings.key = null || this.sortSettings.key != key) {
+      } else if (this.sortSettings.key = null || key != this.sortSettings.key) {
         this.sortSettings.order = 1;
       }
       this.sortSettings.key = key;
