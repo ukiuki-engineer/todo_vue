@@ -146,10 +146,10 @@ new Vue({
     },
     // 時刻編集をオン
     editTime: function(task_id) {
-      task_id = this.editting_time_task_id;
+      this.editting_time_task_id = task_id;
     },
     editDate: function(task_id) {
-      task_id = this.editting_date_task_id;
+      this.editting_date_task_id = task_id;
     },
     // 指定されたキーでソート
     sortBy: function(key) {
