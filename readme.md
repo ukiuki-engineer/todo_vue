@@ -1,13 +1,13 @@
 ## 概要
 Vue.jsで作ったToDoリスト。  
-[このリンク](https://hagemanto-saitama.github.io/todo_vue/)から直接動かせる。  
+[このリンク](https://ukiuki-engineer.github.io/todo_vue/)から直接動かせる。  
 ![](image.png)
 ## 設計思想？
 その日一日のタスクを管理するためだけの使い捨てのtodoリスト。  
 基本的にその日が終わったら使い捨てるような感じの使い方を想定しています。
 なのでわざわざDBにデータを蓄積する必要がないので、バックエンドなしでフロントエンドのみの構成としています。
 ## 使い方
-- [このリンク](https://hagemanto-saitama.github.io/todo_vue/)から直接動かせる。
+- [このリンク](https://ukiuki-engineer.github.io/todo_vue/)から直接動かせる。
 - ネットに繋がっていない時でも使いたい場合
 ```git clone```するかディレクトリごとダウンロードし、index.htmlをブラウザで開くだけ。  
 
