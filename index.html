@@ -72,7 +72,7 @@
               />
             </td>
             <td style="width: 102px;">
-              <!--memo: 
+              <!--NOTE:
               :clearable="false" ←クリアボタンの無効化
               公式サイト
               https://vue-select.org/api/props.html
@@ -93,7 +93,7 @@
               v-if="!isEditComment(task.id)"
               style="width: 15px"
             >
-              <!-- memo: tabindex="0"→キーボードの順次ナビゲーションで到達可能に -->
+              <!-- NOTE: tabindex="0"→キーボードの順次ナビゲーションで到達可能に -->
               <i
                 class="bi bi-pencil-fill"
                 tabindex="0"
@@ -107,7 +107,7 @@
               style="width: 435px"
             >
               <!-- MarkDown表示 -->
-              <!-- memo: 閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる -->
+              <!-- NOTE: 閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる -->
               <vue-markdown>{{ task.comment }}</vue-markdown>
             </td>
             <td v-else>

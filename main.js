@@ -16,7 +16,7 @@ var taskStorage = {
  * ライブラリのインポート
  */
 Vue.component('v-select', VueSelect.VueSelect);
-// memo:VueMarkdownの場合はVue.component()ではなくVue.use()で読み込む(?)
+// NOTE: VueMarkdownの場合はVue.component()ではなくVue.use()で読み込む(?)
 // Vue.component('vue-markdown', VueMarkdown);
 Vue.use(VueMarkdown);
 /*
