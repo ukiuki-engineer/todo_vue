@@ -116,7 +116,7 @@ new Vue({
       }
     },
     // 現在の並びでタスクをrenumberする
-    // FIXME:日付や時刻が全部nullの時もソートされてしまう
+    // FIXME: 日付や時刻が全部nullの時もソートされてしまう
     renumber: function() {
       this.tasks.forEach((task, index) => {
         task.id = index + 1;
@@ -160,8 +160,8 @@ new Vue({
         this.sortSettings.order = 1;
       }
       this.sortSettings.key = key;
-      // FIXME:markdownの影響なのか、commentは上手くソートできない
-      // FIXME:時刻をソートできるようにする
+      // FIXME: markdownの影響なのか、commentは上手くソートできない
+      // FIXME: 時刻をソートできるようにする
       // ソート
       if (key == 'name' || key == 'time' || key == 'date') {
         this.tasks.sort((a, b) => {
