@@ -1,10 +1,13 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="lib/bootstrap-icons-1.9.1/bootstrap-icons.css">
-    <link rel="icon" href="lib/bootstrap-icons-1.9.1/check2-circle.svg">
-    <link rel="stylesheet" href="lib/vue-select.css">
-    <link rel="stylesheet" href="main.css">
+    <link
+      rel="stylesheet"
+      href="lib/bootstrap-icons-1.9.1/bootstrap-icons.css"
+    />
+    <link rel="icon" href="lib/bootstrap-icons-1.9.1/check2-circle.svg" />
+    <link rel="stylesheet" href="lib/vue-select.css" />
+    <link rel="stylesheet" href="main.css" />
     <title>ToDo</title>
   </head>
   <body>
@@ -17,9 +20,14 @@
         <!--タスク入力フォーム-->
         <input
           type="text"
-          style="width:350px; border-radius: 5px; font-size: 12px; height: 25px"
+          style="
+            width: 350px;
+            border-radius: 5px;
+            font-size: 12px;
+            height: 25px;
+          "
           placeholder="新しい作業を追加"
-          v-model=submittedTask
+          v-model="submittedTask"
         />
         <!--追加ボタン-->
         <button type="submit" class="btn">Add</button>
@@ -27,12 +35,24 @@
       <table>
         <thead>
           <tr class="thead-tr">
-            <th style="width: 30px"><span class="th-sort" @click="sortBy('id')">No.</span></th>
-            <th style="width: 300px" ><span class="th-sort" @click="sortBy('name')">タスク</span></th>
-            <th style="width: 102px; text-align: center;"><span class="th-sort" @click="sortBy('status_id')">ステータス</span></th>
+            <th style="width: 30px">
+              <span class="th-sort" @click="sortBy('id')">No.</span>
+            </th>
+            <th style="width: 300px">
+              <span class="th-sort" @click="sortBy('name')">タスク</span>
+            </th>
+            <th style="width: 102px; text-align: center">
+              <span class="th-sort" @click="sortBy('status_id')"
+                >ステータス</span
+              >
+            </th>
             <th style="width: 450px" colspan="2">備考(※markdown可)</th>
-            <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('time')">目標時刻</span></th>
-            <th style="width: 70px; text-align: center;"><span class="th-sort" @click="sortBy('date')">期日</span></th>
+            <th style="width: 70px; text-align: center">
+              <span class="th-sort" @click="sortBy('time')">目標時刻</span>
+            </th>
+            <th style="width: 70px; text-align: center">
+              <span class="th-sort" @click="sortBy('date')">期日</span>
+            </th>
             <th style="width: 23px"></th>
           </tr>
         </thead>
@@ -47,13 +67,8 @@
             @dragover.prevent="dragover(index)"
             @dragenter.prevent
           >
-            <td style="width: 30px">
-              {{ task ? task.id : '' }}
-            </td>
-            <td
-              v-if="!isEditTask(task.id)"
-              style="width: 300px"
-            >
+            <td style="width: 30px">{{ task ? task.id : '' }}</td>
+            <td v-if="!isEditTask(task.id)" style="width: 300px">
               <i
                 class="bi bi-pencil-fill"
                 tabindex="0"
@@ -71,7 +86,7 @@
                 @keydown.enter="onKeydownEnter($event.keyCode, 'name')"
               />
             </td>
-            <td style="width: 102px;">
+            <td style="width: 102px">
               <!--NOTE:
               :clearable="false" ←クリアボタンの無効化
               公式サイト
@@ -89,10 +104,7 @@
               >
               </v-select>
             </td>
-            <td
-              v-if="!isEditComment(task.id)"
-              style="width: 15px"
-            >
+            <td v-if="!isEditComment(task.id)" style="width: 15px">
               <!-- NOTE: tabindex="0"→キーボードの順次ナビゲーションで到達可能に -->
               <i
                 class="bi bi-pencil-fill"
@@ -102,10 +114,7 @@
               ></i>
             </td>
             <td v-else style="width: 15px"></td>
-            <td
-              v-if="!isEditComment(task.id)"
-              style="width: 435px"
-            >
+            <td v-if="!isEditComment(task.id)" style="width: 435px">
               <!-- MarkDown表示 -->
               <!-- NOTE: 閉じタグ</vue-markdown>を改行して入れると表示がおかしくなる -->
               <vue-markdown>{{ task.comment }}</vue-markdown>
@@ -117,14 +126,13 @@
                 v-model="task.comment"
                 @blur="editting_comment_task_id = null"
               ></textarea>
-              <br/>
+              <br />
               <button @click="editting_comment_task_id = null">編集完了</button>
               (またはTabキーで編集を完了する)
             </td>
             <td
               class="time"
-              style="width: 70px;
-              text-align: center;"
+              style="width: 70px; text-align: center"
               @click="editTime(task.id)"
             >
               <input
@@ -136,12 +144,12 @@
                 @keydown.escape="editting_time_task_id = null"
                 @blur="editting_time_task_id = null"
               />
-              {{ editting_time_task_id != task.id ? task.time ? task.time : '--:--' : '' }}
+              {{ editting_time_task_id != task.id ? task.time ? task.time :
+              '--:--' : '' }}
             </td>
             <td
               class="date"
-              style="width: 70px;
-              text-align: center;"
+              style="width: 70px; text-align: center"
               @click="editDate(task.id)"
             >
               <input
@@ -153,14 +161,11 @@
                 @keydown.escape="editting_date_task_id = null"
                 @blur="editting_date_task_id = null"
               />
-              {{ editting_date_task_id != task.id ? task.date ? task.date.substr(5, 5) : '--:--' : '' }}
+              {{ editting_date_task_id != task.id ? task.date ?
+              task.date.substr(5, 5) : '--:--' : '' }}
             </td>
             <td style="width: 23px">
-              <input 
-                type="checkbox"
-                class="checkbox"
-                v-model="task.isCheck"
-              >
+              <input type="checkbox" class="checkbox" v-model="task.isCheck" />
             </td>
           </tr>
         </tbody>
