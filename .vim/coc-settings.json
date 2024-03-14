@@ -1,0 +1,14 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "html",
+    "css",
+    "javascript",
+    "json"
+  ],
+  "semanticTokens.enable": true,
+  "eslint.enable": false,
+  "tsserver.enable": false,
+  "javascript.format.enable": true,
+  "prettier.enable": true,
+  "cSpell.ignoreWords": ["editting", "apiname"]
+}
